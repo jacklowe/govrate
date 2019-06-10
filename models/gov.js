@@ -5,7 +5,7 @@ async function getGovs() {
     const govs = await pool.query("SELECT country FROM govs");
     return JSON.stringify(govs);
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
