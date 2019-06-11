@@ -19,4 +19,7 @@ async function addGov(gov) {
   const govs = await pool.query();
   return JSON.stringify(gov);
 }
+
+async function updateGov(gov) {}
+
 exports.getGovs = getGovs;
