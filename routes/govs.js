@@ -4,12 +4,8 @@ const router = express.Router();
 const { getGovs } = require("../models/gov");
 
 router.get("/", async (req, res) => {
-  try {
-    const govs = await getGovs();
-    res.send(govs);
-  } catch (err) {
-    console.error(err);
-  }
+  const govs = await getGovs();
+  res.send(govs);
 });
 
 module.exports = router;

@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
+const winston = require("winston");
 
+require("./startup/logging")();
 require("./startup/routes")(app);
 // const util = require("util");
 
@@ -55,4 +57,5 @@ require("./startup/routes")(app);
 //   }
 // }
 
-app.listen(8000, () => console.log("listening on port 8000"));
+const port = process.env.PORT || 8000;
+app.listen(port, () => winston.info("listening on port 8000"));
