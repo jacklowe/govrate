@@ -1,23 +1,14 @@
-const winston = require("winston");
+const logger = require("winston");
 
 module.exports = function() {
-  winston.configure({
+  logger.configure({
     transports: [
-      new winston.transports.File({
+      new logger.transports.File({ filename: "combined.log" }),
+      new logger.transports.File({
         filename: "error.log",
         level: "error"
       }),
-      new winston.transports.File({ filename: "combined.log" }),
-      new winston.transports.Console({})
+      new logger.transports.Console({})
     ]
-  });
-
-  process.on("uncaughtException", ex => {
-    winston.error(ex.message, ex);
-    process.exit(1);
-  });
-
-  process.on("unhandledRejection", ex => {
-    throw ex;
   });
 };
