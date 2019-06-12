@@ -1,5 +1,3 @@
-// get users .. no
-
 // add a user
 
 // remove a user (must be authenticated as user)
