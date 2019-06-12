@@ -1,10 +1,9 @@
 # govrate
 
-Web app where users can rate/review governments
+web app where users can rate/review governments
 
+backend is a Node RestfulAPI 
 
-Backend is a Node RestfulAPI 
+frontend uses react
 
-React frontend
-
-Database is mySQL
+mySQL database
