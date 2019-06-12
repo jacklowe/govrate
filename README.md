@@ -1,5 +1,4 @@
 # govrate
-rate your governments 😈
 
 web app where users can rate/review governments
 
