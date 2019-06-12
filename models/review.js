@@ -19,12 +19,4 @@ async function getReviews(govId) {
   return JSON.stringify(reviews);
 }
 
-// add review
-
-// delete review
-
-// update review.
-
-// this is full crud i think
-
 exports.getReviews = getReviews;
