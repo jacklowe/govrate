@@ -24,9 +24,5 @@ async function addGov(name) {
   return getGovs();
 }
 
-async function updateGov(gov) {}
-
-async function deleteGov(gov) {}
-
 exports.getGovs = getGovs;
 exports.addGov = addGov;

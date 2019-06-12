@@ -19,5 +19,15 @@ async function getReviews(govId) {
   return JSON.stringify(reviews);
 }
 
-async function addReview(govId, userId) {}
+async function addReview(review) {
+  await pool.query(
+    `INSERT INTO reviews
+      (userId, govId, rating, body)
+    VALUES (?, ?, ?, ?)`,
+    [review.userId, review.govId, review.rating, review.body]
+  );
+  return getReviews(review.govId);
+}
+
 exports.getReviews = getReviews;
+exports.addReview = addReview;

@@ -8,8 +8,8 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const result = await addGov(req.body.name);
-  res.send(result);
+  const updatedGovs = await addGov(req.body.name);
+  res.send(updatedGovs);
 });
 // get a specific gov
 
