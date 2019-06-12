@@ -7,4 +7,4 @@ require("./startup/logging")();
 require("./startup/routes")(app);
 
 const port = process.env.PORT || 8000;
-app.listen(port, () => logger.info("listening on port 8000"));
+app.listen(port, () => logger.info(`listening on port ${port}`));
