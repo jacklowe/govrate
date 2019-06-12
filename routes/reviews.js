@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const review = { ...req.body };
-  console.log(review);
   const updatedReviews = await addReview(review);
   res.send(updatedReviews);
 });
