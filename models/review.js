@@ -3,6 +3,7 @@ const pool = require("../startup/db");
 async function getReviews(govId) {
   const reviews = await pool.query(
     `SELECT 
+      reviewId,
       govId,
       country,
       username,
@@ -29,5 +30,17 @@ async function addReview(review) {
   return getReviews(review.govId);
 }
 
+async function deleteReview(reviewId, govId) {
+  await pool.query(
+    `DELETE FROM reviews
+    WHERE reviewId = ?
+    AND
+    govId = ?`,
+    [reviewId, govId]
+  );
+  return getReviews(govId);
+}
+
 exports.getReviews = getReviews;
 exports.addReview = addReview;
+exports.deleteReview = deleteReview;
