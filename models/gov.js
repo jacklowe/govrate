@@ -3,7 +3,7 @@ const pool = require("../startup/db");
 async function getGovs() {
   const govs = await pool.query(
     `SELECT
-      id,
+      govId,
       country, 
       ROUND(AVG(rating), 1) as averageRating
     FROM govs
