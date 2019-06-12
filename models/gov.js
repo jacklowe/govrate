@@ -14,14 +14,14 @@ async function getGovs() {
 }
 
 async function addGov(name) {
-  const result = await pool.query(
+  await pool.query(
     `INSERT INTO govs (country)
     VALUES (
       ?
     )`,
     [name]
   );
-  return JSON.stringify(result);
+  return getGovs();
 }
 
 async function updateGov(gov) {}

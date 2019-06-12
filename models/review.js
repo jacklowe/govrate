@@ -8,8 +8,8 @@ async function getReviews(govId) {
       username,
       body,
       rating
-    FROM reviews
-    JOIN govs
+    FROM govs
+    JOIN reviews
       USING (govId)
     JOIN users
       USING (userId)
@@ -19,4 +19,5 @@ async function getReviews(govId) {
   return JSON.stringify(reviews);
 }
 
+async function addReview(govId, userId) {}
 exports.getReviews = getReviews;
