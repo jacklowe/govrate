@@ -1,3 +1,7 @@
+const pool = require("../startup/db");
+
+// get user
+
 // add a user
 
 // remove a user (must be authenticated as user)
