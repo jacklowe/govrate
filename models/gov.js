@@ -3,7 +3,6 @@ const pool = require("../startup/db");
 async function getGovs() {
   const govs = await pool.query(
     `SELECT
-      govId, 
       country, 
       ROUND(AVG(rating), 1) as averageRating
     FROM govs
@@ -13,6 +12,9 @@ async function getGovs() {
   return JSON.stringify(govs);
 }
 
+// display a gov and its reviews...
+async function getGovReviews(gov) {}
+
 async function addGov(gov) {
   // need to prevent sql injection here
   // probably best to keep this api private
@@ -21,5 +23,7 @@ async function addGov(gov) {
 }
 
 async function updateGov(gov) {}
+
+async function deleteGov(gov) {}
 
 exports.getGovs = getGovs;
