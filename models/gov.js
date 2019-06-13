@@ -24,6 +24,8 @@ async function addGov(name) {
   return getGovs();
 }
 
+// this really needs to be a transaction to get rid of related
+// reviews
 async function deleteGov(govId) {
   await pool.query(
     `DELETE FROM govs
