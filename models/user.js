@@ -1,9 +1,14 @@
-const pool = require("../startup/db");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 
-// get user
+function generateAuthToken(userId) {
+  const token = jwt.sign(
+    { _id: userId },
+    // ,
+    // isAdmin: this.isAdmin },
+    config.get("jwtPrivateKey")
+  );
+  return token;
+}
 
-// add a user
-
-// remove a user (must be authenticated as user)
-
-// get user email and username (admin only)
+exports.generateAuthToken = generateAuthToken;
