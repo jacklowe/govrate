@@ -11,4 +11,11 @@ function generateAuthToken(userId) {
   return token;
 }
 
+async function addUser() {
+  // hahaha
+}
+
+async function findUserByEmail() {
+  // hahahah
+}
 exports.generateAuthToken = generateAuthToken;
