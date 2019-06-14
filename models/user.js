@@ -1,10 +1,11 @@
-const jwt = require("json-web-token");
+const jwt = require("jsonwebtoken");
 const config = require("config");
 const pool = require("../startup/db");
 const bcrypt = require("bcrypt");
 const { getGovs } = require("./gov");
 
 function generateAuthToken(userId) {
+  console.log(jwt);
   const token = jwt.sign(
     { _id: userId },
     // ,
