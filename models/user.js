@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const pool = require("../startup/db");
+const bcrypt = require("bcrypt");
+const { getGovs } = require("./gov");
 
 function generateAuthToken(userId) {
   const token = jwt.sign(
@@ -12,17 +14,28 @@ function generateAuthToken(userId) {
   return token;
 }
 
-async function addUser() {
-  // hahaha
-  pool.query();
-  // need to hash and salt baybe
-  user = new User(_.pick(req.body, ["name", "email", "password"]));
+async function addUser(user) {
+  const { email, username, password } = user;
 
   const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt);
-  // add user to db...
-  await user.save();
+  password = await bcrypt.hash(password, salt);
+
+  await pool.query(
+    `INSERT INTO users (email, username, password)
+    VALUES (
+      ?, ?, ?
+    )`,
+    [email, username, password]
+  );
+  res.send(getGovs());
 }
 
-async function findUserByEmail() {}
+async function findUserByEmail(email) {
+  const user = await pool.query(
+    `SELECT username, email FROM users WHERE email = ?`,
+    [email]
+  );
+  res.send(JSON.stringify(user));
+}
+
 exports.generateAuthToken = generateAuthToken;
