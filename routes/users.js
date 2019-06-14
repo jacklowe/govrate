@@ -1,5 +1,9 @@
 const pool = require("../startup/db");
-const { generateAuthToken, addUser } = require("../models/user");
+const {
+  generateAuthToken,
+  addUser,
+  findUserByEmail
+} = require("../models/user");
 const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
@@ -9,11 +13,11 @@ router.post("/", async (req, res) => {
   console.log(user);
 
   // add user to db...
-  const govs = await addUser(user);
+  const response = await addUser(user);
 
-  // const token = generateAuthToken(userId);
-  res.send(govs);
-  // .header("x-auth-token", token)
+  const { userId } = findUserByEmail();
+  const token = generateAuthToken(userId);
+  res.send(response).header("x-auth-token", token);
 });
 
 module.exports = router;

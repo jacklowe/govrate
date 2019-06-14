@@ -9,7 +9,7 @@ function generateAuthToken(userId) {
     { _id: userId },
     // ,
     // isAdmin: this.isAdmin },
-    config.get("jwtPrivateKey")
+    process.env.jwtPrivateKey
   );
   return token;
 }
@@ -27,6 +27,7 @@ async function addUser(user) {
     )`,
     [email, username, password]
   );
+
   return getGovs();
 }
 
