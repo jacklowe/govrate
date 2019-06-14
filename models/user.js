@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const pool = require("../startup/db");
 const bcrypt = require("bcrypt");
-const { getGovs } = require("./gov");
 
 function generateAuthToken(userId) {
   const token = jwt.sign(
