@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+const jwt = require("json-web-token");
 const config = require("config");
 const pool = require("../startup/db");
 const bcrypt = require("bcrypt");
@@ -15,7 +15,7 @@ function generateAuthToken(userId) {
 }
 
 async function addUser(user) {
-  const { email, username, password } = user;
+  let { email, username, password } = user;
 
   const salt = await bcrypt.genSalt(10);
   password = await bcrypt.hash(password, salt);
