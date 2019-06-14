@@ -27,7 +27,7 @@ async function addUser(user) {
     )`,
     [email, username, password]
   );
-  res.send(getGovs());
+  return getGovs();
 }
 
 async function findUserByEmail(email) {
@@ -35,7 +35,9 @@ async function findUserByEmail(email) {
     `SELECT username, email FROM users WHERE email = ?`,
     [email]
   );
-  res.send(JSON.stringify(user));
+  return JSON.stringify(user);
 }
 
 exports.generateAuthToken = generateAuthToken;
+exports.addUser = addUser;
+exports.findUserByEmail = findUserByEmail;
