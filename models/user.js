@@ -30,9 +30,19 @@ async function addUser(user) {
   return findUserByEmail(email);
 }
 
-async function findUserByEmail(email) {
-  const user = await pool.query(
-    `SELECT userId, username, email FROM users WHERE email = ?`,
+async function findUserByEmail(email, sendPassword = false) {
+  let andPassword = "";
+  if (sendPassword) {
+    andPassword = ", password";
+  }
+  let user = await pool.query(
+    `SELECT 
+      userId, 
+      username, 
+      email 
+      ${andPassword} 
+    FROM users 
+    WHERE email = ?`,
     [email]
   );
   return JSON.stringify(user);

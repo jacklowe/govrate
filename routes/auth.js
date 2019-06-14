@@ -1,16 +1,21 @@
 const bcrypt = require("bcrypt");
-const { generateAuthToken } = require("../models/user");
+const { generateAuthToken, findUserByEmail } = require("../models/user");
 const express = require("express");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-  let user = await findUserByEmail(req.body.email);
+  let user = await findUserByEmail(req.body.email, true);
+  // need to get user object from JSON like [{user}]
+  user = JSON.parse(user)[0];
+
+  console.log(user);
   if (!user) return res.status(400).send("Invalid email or password");
 
   const validPassword = await bcrypt.compare(req.body.password, user.password);
-  if (!validPassword) return res.status(400).send("Invalid email or password");
+  if (!validPassword)
+    return res.status(400).send("Invalid email or passwordkk");
 
-  const token = generateAuthToken(userId);
+  const token = generateAuthToken(user.userId);
   res.send(token);
 });
 
