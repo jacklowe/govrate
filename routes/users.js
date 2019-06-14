@@ -11,12 +11,10 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   let user = req.body;
 
-  const response = await addUser(user);
+  user = await addUser(user);
 
-  const { userId } = findUserByEmail();
-  const token = generateAuthToken(userId);
-
-  res.header("x-auth-token", token).send(response);
+  const token = generateAuthToken(user.userId);
+  res.header("x-auth-token", token).send(user);
 });
 
 module.exports = router;

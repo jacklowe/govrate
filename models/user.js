@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 const { getGovs } = require("./gov");
 
 function generateAuthToken(userId) {
-  console.log(jwt);
   const token = jwt.sign(
     { _id: userId },
     // ,
@@ -29,12 +28,12 @@ async function addUser(user) {
     [email, username, password]
   );
 
-  return getGovs();
+  return findUserByEmail(email);
 }
 
 async function findUserByEmail(email) {
   const user = await pool.query(
-    `SELECT username, email FROM users WHERE email = ?`,
+    `SELECT userId, username, email FROM users WHERE email = ?`,
     [email]
   );
   return JSON.stringify(user);
