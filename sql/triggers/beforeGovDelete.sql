@@ -1,0 +1,10 @@
+DELIMITER $$
+CREATE TRIGGER after_gov_delete
+	BEFORE DELETE ON govs
+    FOR EACH ROW
+BEGIN
+ DELETE FROM reviews
+ WHERE govId = OLD.govId;
+END$$
+
+DELIMITER ;
