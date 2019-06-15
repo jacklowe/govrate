@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
 
   user = await addUser(user);
 
-  const token = generateAuthToken(user.userId);
+  const token = generateAuthToken(user.userId, user.isAdmin);
   res.header("x-auth-token", token).send(user);
 });
 

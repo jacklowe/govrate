@@ -1,10 +1,11 @@
 const util = require("util");
 const mysql = require("mysql");
+const config = require("config");
 
 const pool = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: process.env.mysqlPassword,
+  password: process.env.mySqlPassword,
   database: "govrate"
 });
 

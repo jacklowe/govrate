@@ -3,11 +3,9 @@ const config = require("config");
 const pool = require("../startup/db");
 const bcrypt = require("bcrypt");
 
-function generateAuthToken(userId) {
+function generateAuthToken(userId, isAdmin) {
   const token = jwt.sign(
-    { _id: userId },
-    // ,
-    // isAdmin: this.isAdmin },
+    { _id: userId, isAdmin: isAdmin },
     process.env.jwtPrivateKey
   );
   return token;
