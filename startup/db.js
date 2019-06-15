@@ -1,13 +1,8 @@
 const util = require("util");
 const mysql = require("mysql");
-const config = require("config");
+const config = require("../config");
 
-const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: process.env.mySqlPassword,
-  database: "govrate"
-});
+const pool = mysql.createPool(config.db);
 
 pool.query = util.promisify(pool.query);
 

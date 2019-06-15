@@ -1,4 +1,0 @@
-{
-  "jwtPrivateKey": "govrate_jwtPrivateKey",
-  "mySqlPassword": "govrate_mySqlPassword"
-}

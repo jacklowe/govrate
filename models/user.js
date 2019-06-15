@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const pool = require("../startup/db");
 const bcrypt = require("bcrypt");
 
@@ -33,11 +32,13 @@ async function findUserByEmail(email, sendPassword = false) {
   if (sendPassword) {
     andPassword = ", password";
   }
+
   let user = await pool.query(
     `SELECT 
       userId, 
       username, 
-      email 
+      email, 
+      isAdmin 
       ${andPassword} 
     FROM users 
     WHERE email = ?`,
