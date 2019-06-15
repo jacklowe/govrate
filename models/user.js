@@ -1,11 +1,12 @@
-const jwt = require("jsonwebtoken");
 const pool = require("../startup/db");
+const config = require("../config");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 function generateAuthToken(userId, isAdmin) {
   const token = jwt.sign(
     { _id: userId, isAdmin: isAdmin },
-    process.env.jwtPrivateKey
+    config.jwt.privateKey
   );
   return token;
 }

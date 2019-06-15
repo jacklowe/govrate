@@ -8,7 +8,6 @@ router.post("/", async (req, res) => {
   // need to get user object from JSON like [{user}]
   user = JSON.parse(user)[0];
 
-  console.log(user);
   if (!user) return res.status(400).send("Invalid email or password");
 
   const validPassword = await bcrypt.compare(req.body.password, user.password);
