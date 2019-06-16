@@ -7,12 +7,12 @@ router.get("/", async (req, res) => {
   res.send(govs);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", [auth, admin], async (req, res) => {
   const updatedGovs = await addGov(req.body.name);
   res.send(updatedGovs);
 });
 
-router.delete("/:govId", async (req, res) => {
+router.delete("/:govId", [auth, admin], async (req, res) => {
   const updatedGovs = await deleteGov(req.params.govId);
   res.send(updatedGovs);
 });

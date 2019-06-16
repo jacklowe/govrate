@@ -7,13 +7,14 @@ router.get("/", async (req, res) => {
   res.send(reviews);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", [auth], async (req, res) => {
   const review = { ...req.body };
   const updatedReviews = await addReview(review);
   res.send(updatedReviews);
 });
 
-router.delete("/:reviewId", async (req, res) => {
+router.delete("/:reviewId", [auth], async (req, res) => {
+  // need to add here... if userId matches that of review in db...
   const updatedReviews = await deleteReview(
     req.params.reviewId,
     req.params.govId

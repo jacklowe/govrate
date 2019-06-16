@@ -20,6 +20,10 @@ async function getReviews(govId) {
   return JSON.stringify(reviews);
 }
 
+async function getReview(userId, govId) {
+  // get review from db
+}
+
 async function addReview(review) {
   await pool.query(
     `INSERT INTO reviews

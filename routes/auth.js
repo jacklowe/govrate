@@ -5,7 +5,8 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   let user = await findUserByEmail(req.body.email, true);
-  // need to get user object from JSON like [{user}]
+
+  // need to get user javascript object from JSON like [{user}]
   user = JSON.parse(user)[0];
 
   if (!user) return res.status(400).send("Invalid email or password");
