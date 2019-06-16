@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
+const auth = require("../middleware/auth");
 const { getReviews, addReview, deleteReview } = require("../models/review");
 
 router.get("/", async (req, res) => {

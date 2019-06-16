@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
+const auth = require("../middleware/auth");
+const admin = require("../middleware/admin");
 const { getGovs, addGov, deleteGov } = require("../models/gov");
 
 router.get("/", async (req, res) => {
