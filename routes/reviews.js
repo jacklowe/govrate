@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
 const auth = require("../middleware/auth");
-const { getReviews, addReview, deleteReview } = require("../models/review");
+const {
+  getReviews,
+  getReview,
+  checkIfPrevReview,
+  addReview,
+  deleteReview
+} = require("../models/review");
 
 router.get("/", async (req, res) => {
   const reviews = await getReviews(req.params.govId);
@@ -9,17 +15,27 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", [auth], async (req, res) => {
-  const review = { ...req.body };
-  const updatedReviews = await addReview(review);
+  const userId = req.user._id;
+  const govId = req.params.govId;
+  const { rating, body } = req.body;
+
+  const previousReview = await checkIfPrevReview(userId, govId);
+  if (previousReview) {
+    return res.status(400).send("You have already reviewed this gov");
+  }
+
+  const updatedReviews = await addReview(userId, govId, rating, body);
   res.send(updatedReviews);
 });
 
 router.delete("/:reviewId", [auth], async (req, res) => {
   // need to add here... if userId matches that of review in db...
-  const updatedReviews = await deleteReview(
-    req.params.reviewId,
-    req.params.govId
-  );
+  const userId = req.user._id;
+  const { govId, reviewId } = req.params;
+  const review = await getReview(reviewId);
+  if (userId !== review.userId)
+    return res.status(400).send("That's not yours to delete");
+  const updatedReviews = await deleteReview(reviewId);
   res.send(updatedReviews);
 });
 
