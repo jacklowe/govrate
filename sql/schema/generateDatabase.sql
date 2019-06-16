@@ -76,6 +76,17 @@ BEGIN
  WHERE govId = OLD.govId;
 END$$
 
+USE `govrate`$$
+CREATE
+DEFINER=`root`@`localhost`
+TRIGGER `govrate`.`before_user_delete`
+BEFORE DELETE ON `govrate`.`users`
+FOR EACH ROW
+BEGIN
+ DELETE FROM reviews
+ WHERE userId = OLD.userId;
+END$$
+
 
 DELIMITER ;
 

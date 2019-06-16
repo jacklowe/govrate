@@ -2,6 +2,7 @@ const pool = require("../startup/db");
 const config = require("../config");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { getGovs } = require("./gov");
 
 function generateAuthToken(userId, isAdmin) {
   const token = jwt.sign(
@@ -48,6 +49,16 @@ async function findUserByEmail(email, sendPassword = false) {
   return JSON.stringify(user);
 }
 
+async function deleteUser(userId) {
+  await pool.query(
+    `DELETE FROM users
+    WHERE userId = ?`,
+    [userId]
+  );
+  return getGovs();
+}
+
 exports.generateAuthToken = generateAuthToken;
 exports.addUser = addUser;
 exports.findUserByEmail = findUserByEmail;
+exports.deleteUser = deleteUser;
