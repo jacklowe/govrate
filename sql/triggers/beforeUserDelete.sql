@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE TRIGGER after_gov_delete
+CREATE TRIGGER before_user_delete
 	BEFORE DELETE ON users
     FOR EACH ROW
 BEGIN
