@@ -1,10 +1,5 @@
-const pool = require("../startup/db");
-const {
-  generateAuthToken,
-  addUser,
-  findUserByEmail
-} = require("../models/user");
-const bcrypt = require("bcrypt");
+const { generateAuthToken, addUser } = require("../models/user");
+
 const express = require("express");
 const router = express.Router();
 

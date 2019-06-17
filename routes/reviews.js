@@ -4,7 +4,7 @@ const auth = require("../middleware/auth");
 const {
   getReviews,
   getReview,
-  checkIfPrevReview,
+  checkIfReviewed,
   addReview,
   deleteReview
 } = require("../models/review");
@@ -19,7 +19,7 @@ router.post("/", [auth], async (req, res) => {
   const govId = req.params.govId;
   const { rating, body } = req.body;
 
-  const previousReview = await checkIfPrevReview(userId, govId);
+  const previousReview = await checkIfReviewed(userId, govId);
   if (previousReview) {
     return res.status(400).send("You have already reviewed this gov");
   }
@@ -30,10 +30,13 @@ router.post("/", [auth], async (req, res) => {
 
 router.delete("/:reviewId", [auth], async (req, res) => {
   const userId = req.user._id;
-  const { govId, reviewId } = req.params;
+  const { reviewId } = req.params;
+
   const review = await getReview(reviewId);
-  if (userId !== review.userId)
+  if (userId !== review.userId) {
     return res.status(400).send("That's not yours to delete");
+  }
+
   const updatedReviews = await deleteReview(reviewId);
   res.send(updatedReviews);
 });

@@ -51,7 +51,7 @@ async function deleteReview(reviewId) {
   return getGovs();
 }
 
-async function checkIfPrevReview(userId, govId) {
+async function checkIfReviewed(userId, govId) {
   const review = await pool.query(
     `SELECT reviewId, userId 
     FROM reviews
@@ -64,4 +64,4 @@ exports.getReviews = getReviews;
 exports.getReview = getReview;
 exports.addReview = addReview;
 exports.deleteReview = deleteReview;
-exports.checkIfPrevReview = checkIfPrevReview;
+exports.checkIfReviewed = checkIfReviewed;
