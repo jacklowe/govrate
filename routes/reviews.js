@@ -29,7 +29,6 @@ router.post("/", [auth], async (req, res) => {
 });
 
 router.delete("/:reviewId", [auth], async (req, res) => {
-  // need to add here... if userId matches that of review in db...
   const userId = req.user._id;
   const { govId, reviewId } = req.params;
   const review = await getReview(reviewId);
