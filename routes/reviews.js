@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", [auth], async (req, res) => {
-  const userId = req.user._id;
+  const userId = req.userId;
   const govId = req.params.govId;
   const { rating, body } = req.body;
 
@@ -29,7 +29,7 @@ router.post("/", [auth], async (req, res) => {
 });
 
 router.delete("/:reviewId", [auth], async (req, res) => {
-  const userId = req.user._id;
+  const userId = req.user.userId;
   const { reviewId } = req.params;
 
   const review = await getReview(reviewId);

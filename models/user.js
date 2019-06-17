@@ -6,7 +6,7 @@ const { getGovs } = require("./gov");
 
 function generateAuthToken(userId, isAdmin) {
   const token = jwt.sign(
-    { _id: userId, isAdmin: isAdmin },
+    { userId: userId, isAdmin: isAdmin },
     config.jwt.privateKey
   );
   return token;
