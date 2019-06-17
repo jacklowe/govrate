@@ -4,7 +4,7 @@
   "description": "rate ur governments",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --runInBand --watchAll"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",

@@ -6,7 +6,7 @@ describe("generateAuthToken", () => {
   it("should generate a valid JWT", () => {
     const payload = {
       userId: 1,
-      isAdmin: true
+      isAdmin: 1
     };
     const token = generateAuthToken(payload.userId, payload.isAdmin);
     const decoded = jwt.verify(token, config.jwt.privateKey);
