@@ -1,4 +1,5 @@
 const env = process.env.NODE_ENV;
+// note that Jest sets NODE_ENV to test by default
 require("./startup/config")();
 
 const dev = {
@@ -14,7 +15,8 @@ const dev = {
   },
   jwt: {
     privateKey: process.env.DEV_JWT_PRIVATE_KEY
-  }
+  },
+  env: "dev"
 };
 
 const test = {
@@ -26,12 +28,14 @@ const test = {
     user: process.env.TEST_DB_USER || "root",
     password: process.env.TEST_DB_PASSWORD || process.env.DEV_DB_PASSWORD,
     port: parseInt(process.env.TEST_DB_PORT) || 3306,
-    database: process.env.TEST_DB_NAME || "govrate_tests"
+    database: process.env.TEST_DB_NAME || "govrate_tests",
+    multipleStatements: true
   },
   jwt: {
     privateKey:
       process.env.TEST_JWT_PRIVATE_KEY || process.env.DEV_JWT_PRIVATE_KEY
-  }
+  },
+  env: "test"
 };
 
 const config = {

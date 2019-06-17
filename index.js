@@ -6,6 +6,8 @@ require("./startup/errors")();
 require("./startup/logging")();
 require("./startup/routes")(app);
 
-app.listen(config.app.port, () =>
+const server = app.listen(config.app.port, () =>
   logger.info(`listening on port ${config.app.port}`)
 );
+
+module.exports = server;
