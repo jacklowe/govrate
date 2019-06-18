@@ -25,12 +25,13 @@ async function addGov(country) {
 }
 
 async function deleteGov(govId) {
+  const gov = getGovById(govId);
   await pool.query(
     `DELETE FROM govs
     WHERE govId = ?`,
     [govId]
   );
-  return getGovs();
+  return gov;
 }
 
 async function getGov(country) {
@@ -42,7 +43,17 @@ async function getGov(country) {
   return gov[0];
 }
 
+async function getGovById(govId) {
+  const gov = await pool.query(
+    `SELECT govId, country FROM govs
+    WHERE govId = ?`,
+    [govId]
+  );
+  return gov[0];
+}
+
 exports.getGovs = getGovs;
 exports.addGov = addGov;
 exports.deleteGov = deleteGov;
 exports.getGov = getGov;
+exports.getGovById = getGovById;

@@ -15,8 +15,9 @@ router.post("/", [auth, admin], async (req, res) => {
 });
 
 router.delete("/:govId", [auth, admin], async (req, res) => {
-  const updatedGovs = await deleteGov(req.params.govId);
-  res.json(updatedGovs);
+  const gov = await deleteGov(req.params.govId);
+  if (!gov) res.status(404).send("No gov exists with given id");
+  res.json(gov);
 });
 
 module.exports = router;
