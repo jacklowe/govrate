@@ -21,7 +21,7 @@ const dev = {
 
 const test = {
   app: {
-    port: parseInt(process.env.TEST_APP_PORT) || 8080
+    port: parseInt(process.env.TEST_APP_PORT) || 8888
   },
   db: {
     host: process.env.TEST_DB_HOST || "localhost",

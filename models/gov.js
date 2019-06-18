@@ -10,16 +10,16 @@ async function getGovs() {
     LEFT JOIN reviews USING (govId) 
     GROUP BY govId;`
   );
-  return JSON.stringify(govs);
+  return govs;
 }
 
-async function addGov(name) {
+async function addGov(country) {
   await pool.query(
     `INSERT INTO govs (country)
     VALUES (
       ?
     )`,
-    [name]
+    [country]
   );
   return getGovs();
 }
@@ -33,6 +33,16 @@ async function deleteGov(govId) {
   return getGovs();
 }
 
+async function getGov(country) {
+  const gov = await pool.query(
+    `SELECT govId, country FROM govs
+    WHERE country = ?`,
+    [country]
+  );
+  return gov;
+}
+
 exports.getGovs = getGovs;
 exports.addGov = addGov;
 exports.deleteGov = deleteGov;
+exports.getGov = getGov;

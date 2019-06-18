@@ -18,7 +18,7 @@ async function getReviews(govId) {
     WHERE govId = ?`,
     [govId]
   );
-  return JSON.stringify(reviews);
+  return reviews;
 }
 
 async function getReview(reviewId) {

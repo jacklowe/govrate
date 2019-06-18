@@ -6,17 +6,17 @@ const { getGovs, addGov, deleteGov } = require("../models/gov");
 
 router.get("/", async (req, res) => {
   const govs = await getGovs();
-  res.send(govs);
+  res.json(govs);
 });
 
 router.post("/", [auth, admin], async (req, res) => {
-  const updatedGovs = await addGov(req.body.name);
-  res.send(updatedGovs);
+  const updatedGovs = await addGov(req.body.country);
+  res.json(updatedGovs);
 });
 
 router.delete("/:govId", [auth, admin], async (req, res) => {
   const updatedGovs = await deleteGov(req.params.govId);
-  res.send(updatedGovs);
+  res.json(updatedGovs);
 });
 
 module.exports = router;
