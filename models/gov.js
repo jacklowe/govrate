@@ -14,7 +14,7 @@ async function getGovs() {
 }
 
 async function addGov(country) {
-  const gov = await pool.query(
+  await pool.query(
     `INSERT INTO govs (country)
     VALUES (
       ?
