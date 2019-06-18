@@ -4,7 +4,7 @@ const pool = require("../../../startup/db");
 const { addGov, getGov } = require("../../../models/gov");
 const { generateAuthToken } = require("../../../models/user");
 
-describe("govs routes", () => {
+describe("/api/govs", () => {
   let server;
   beforeEach(() => (server = require("../../../index")));
 

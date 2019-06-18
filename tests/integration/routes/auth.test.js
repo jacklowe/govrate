@@ -3,7 +3,7 @@ const { generateAuthToken } = require("../../../models/user");
 const clearTestData = require("../../../scripts/clearTestData");
 const pool = require("../../../startup/db");
 
-describe("auth middleware", () => {
+describe("/api/auth", () => {
   let server;
   beforeEach(() => (server = require("../../../index")));
   afterEach(async () => {

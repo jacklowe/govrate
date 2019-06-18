@@ -2,7 +2,7 @@ const request = require("supertest");
 const clearTestData = require("../../../scripts/clearTestData");
 const pool = require("../../../startup/db");
 
-describe("govs routes", () => {
+describe("/api/reviews", () => {
   let server;
   beforeEach(() => (server = require("../../../index")));
   afterEach(async () => {
