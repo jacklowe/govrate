@@ -69,4 +69,10 @@ describe("govs routes", () => {
       expect(res.body).toHaveProperty("country", "UK");
     });
   });
+
+  describe("DELETE /:govId", () => {
+    it("1 should be 1", async () => {
+      expect(1).toBe(1);
+    });
+  });
 });
