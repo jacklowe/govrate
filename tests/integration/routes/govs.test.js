@@ -71,8 +71,20 @@ describe("govs routes", () => {
   });
 
   describe("DELETE /:govId", () => {
-    it("1 should be 1", async () => {
-      expect(1).toBe(1);
+    beforeEach(async () => {
+      await addGov("UK");
+    });
+
+    it("should return 401 if client is not logged in", async () => {
+      const { govId } = await getGov("UK");
+      console.log(govId);
+      const token = "";
+      const res = await request(server)
+        .delete(`/api/govs/${govId}`)
+        .set("x-auth-token", token)
+        .send();
+
+      expect(res.status).toBe(401);
     });
   });
 });
