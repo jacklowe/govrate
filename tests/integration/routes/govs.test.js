@@ -55,8 +55,18 @@ describe("govs routes", () => {
         .send({ country: "UK" });
 
       const gov = await getGov("UK");
-      console.log(gov);
-      expect(gov).not.toBeNull();
+      expect(gov.govId).not.toBeNull();
+    });
+
+    it("should return the country if valid request", async () => {
+      const token = generateAuthToken(1, (isAdmin = true));
+      const res = await request(server)
+        .post("/api/govs")
+        .set("x-auth-token", token)
+        .send({ country: "UK" });
+
+      expect(res.body).toHaveProperty("govId");
+      expect(res.body).toHaveProperty("country", "UK");
     });
   });
 });

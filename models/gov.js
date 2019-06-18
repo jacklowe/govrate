@@ -14,14 +14,14 @@ async function getGovs() {
 }
 
 async function addGov(country) {
-  await pool.query(
+  const gov = await pool.query(
     `INSERT INTO govs (country)
     VALUES (
       ?
     )`,
     [country]
   );
-  return getGovs();
+  return getGov(country); //getGovs();
 }
 
 async function deleteGov(govId) {
@@ -39,7 +39,7 @@ async function getGov(country) {
     WHERE country = ?`,
     [country]
   );
-  return gov;
+  return gov[0];
 }
 
 exports.getGovs = getGovs;
