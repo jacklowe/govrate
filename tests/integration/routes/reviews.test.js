@@ -7,24 +7,28 @@ const pool = require("../../../startup/db");
 
 describe("/api/reviews", () => {
   let server;
-  beforeEach(() => (server = require("../../../index")));
+  let user;
+  let gov;
+  beforeEach(async () => {
+    server = require("../../../index");
+    user = await addUser({
+      username: "jack",
+      email: "jack@gmail.com",
+      password: "pa55w0rd"
+    });
+    gov = await addGov("UK");
+  });
+
   afterEach(async () => {
     await clearTestData();
     await server.close();
   });
+
   afterAll(() => pool.end());
 
   describe("GET /", () => {
-    let user;
-    let gov;
     let review;
     beforeEach(async () => {
-      user = await addUser({
-        username: "jack",
-        email: "jack@gmail.com",
-        password: "pa55w0rd"
-      });
-      gov = await addGov("UK");
       review = await addReview(user.userId, gov.govId, 3, "lul");
     });
 
@@ -34,4 +38,6 @@ describe("/api/reviews", () => {
       expect(res.body[0]).toHaveProperty("rating", review.rating);
     });
   });
+
+  describe("POST /", () => {});
 });
