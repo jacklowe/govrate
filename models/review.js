@@ -61,12 +61,13 @@ async function addReview(userId, govId, rating, body) {
 }
 
 async function deleteReview(reviewId) {
+  const review = await getReview(reviewId);
   await pool.query(
     `DELETE FROM reviews
     WHERE reviewId = ?`,
     [reviewId]
   );
-  return getGovs();
+  return review;
 }
 
 async function checkIfReviewed(userId, govId) {

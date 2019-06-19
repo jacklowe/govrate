@@ -33,6 +33,8 @@ router.delete("/:reviewId", [auth], async (req, res) => {
   const { reviewId } = req.params;
 
   const review = await getReview(reviewId);
+  if (!review) return res.status(404).send("Review not found");
+
   if (userId !== review.userId) {
     return res.status(400).send("That's not yours to delete");
   }
