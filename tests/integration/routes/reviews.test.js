@@ -79,5 +79,18 @@ describe("/api/reviews", () => {
 
       expect(res.status).toBe(200);
     });
+
+    it("should return review if valid request", async () => {
+      const token = generateAuthToken(user.userId);
+      const res = await request(server)
+        .post(`/api/govs/${gov.govId}/reviews`)
+        .set("x-auth-token", token)
+        .send({
+          rating: 3,
+          body: "hahaha"
+        });
+      expect(res.body).toHaveProperty("rating", 3);
+      expect(res.body).toHaveProperty("body", "hahaha");
+    });
   });
 });
