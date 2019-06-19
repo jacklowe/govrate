@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", [auth], async (req, res) => {
-  const userId = req.userId;
+  const userId = req.user.userId;
   const govId = req.params.govId;
   const { rating, body } = req.body;
 
