@@ -1,4 +1,7 @@
 const request = require("supertest");
+const { addUser } = require("../../../models/user");
+const { addGov } = require("../../../models/gov");
+const { addReview } = require("../../../models/review");
 const clearTestData = require("../../../scripts/clearTestData");
 const pool = require("../../../startup/db");
 
@@ -11,7 +14,24 @@ describe("/api/reviews", () => {
   });
   afterAll(() => pool.end());
 
-  it("1 should be 1", async () => {
-    expect(1).toBe(1);
+  describe("GET /", () => {
+    let user;
+    let gov;
+    let review;
+    beforeEach(async () => {
+      user = await addUser({
+        username: "jack",
+        email: "jack@gmail.com",
+        password: "pa55w0rd"
+      });
+      gov = await addGov("UK");
+      review = await addReview(user.userId, gov.govId, 3, "lul");
+    });
+
+    it("should return all reviews for a gov", async () => {
+      const res = await request(server).get(`/api/govs/${gov.govId}/reviews`);
+
+      expect(res.body[0]).toHaveProperty("rating", review.rating);
+    });
   });
 });

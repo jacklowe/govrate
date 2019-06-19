@@ -32,6 +32,24 @@ async function getReview(reviewId) {
   return review[0];
 }
 
+async function getReviewByGovAndUser(govId, userId) {
+  const review = await pool.query(
+    `SELECT 
+      reviewId, 
+      userId, 
+      govId, 
+      rating, 
+      body 
+    FROM 
+      reviews 
+    WHERE 
+      userId = ? 
+    AND 
+      govId = ? `,
+    [userId, govId]
+  );
+  return review[0];
+}
 async function addReview(userId, govId, rating, body) {
   await pool.query(
     `INSERT INTO reviews
@@ -39,7 +57,7 @@ async function addReview(userId, govId, rating, body) {
     VALUES (?, ?, ?, ?)`,
     [userId, govId, rating, body]
   );
-  return getReviews(govId);
+  return getReviewByGovAndUser(govId, userId);
 }
 
 async function deleteReview(reviewId) {
