@@ -39,8 +39,9 @@ router.delete("/:reviewId", [auth], async (req, res) => {
     return res.status(400).send("That's not yours to delete");
   }
 
-  const updatedReviews = await deleteReview(reviewId);
-  res.send(updatedReviews);
+  await deleteReview(reviewId);
+
+  res.send(review);
 });
 
 module.exports = router;

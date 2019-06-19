@@ -142,5 +142,16 @@ describe("/api/reviews", () => {
       const reviewInDatabase = await getReview(review.reviewId);
       expect(reviewInDatabase).toBeUndefined();
     });
+
+    it("should return the removed review if valid request", async () => {
+      const token = generateAuthToken(user.userId);
+      const res = await request(server)
+        .delete(`/api/govs/${gov.govId}/reviews/${review.reviewId}`)
+        .set("x-auth-token", token)
+        .send();
+
+      expect(res.body).toHaveProperty("rating", 3);
+      expect(res.body).toHaveProperty("body", "lul");
+    });
   });
 });

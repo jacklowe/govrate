@@ -24,7 +24,8 @@ async function getReviews(govId) {
 async function getReview(reviewId) {
   // get review from db
   const review = await pool.query(
-    `SELECT reviewId, userId 
+    `SELECT 
+      reviewId, userId, govId, rating, body 
     FROM reviews
     WHERE reviewId = ?`,
     [reviewId]
