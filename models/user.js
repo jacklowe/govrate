@@ -46,7 +46,7 @@ async function findUserByEmail(email, sendPassword = false) {
     WHERE email = ?`,
     [email]
   );
-  return JSON.stringify(user);
+  return user[0];
 }
 
 async function deleteUser(userId) {
