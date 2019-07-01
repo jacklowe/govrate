@@ -11,7 +11,19 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /models/,
+          /coverage/,
+          /middleware/,
+          /routes/,
+          /scripts/,
+          /sql/,
+          /startup/,
+          /tests/,
+          / index.js /,
+          /config.js/
+        ],
         use: {
           loader: "babel-loader"
         }
