@@ -1,12 +1,17 @@
 import React from "react";
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
   return (
     <nav>
       <h1>Govrate</h1>
       <ul>
-        <li>sign up</li>
-        <li>log in</li>
+        {!user && (
+          <React.Fragment>
+            <li>login</li>
+            <li>register</li>
+          </React.Fragment>
+        )}
+        {user && <li>{user}</li>}
       </ul>
     </nav>
   );

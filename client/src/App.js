@@ -1,10 +1,10 @@
 import React from "react";
-import NavBar from "./navBar";
+import NavBar from "./components/navBar";
 
 const App = () => {
   return (
     <React.Fragment>
-      <NavBar />
+      <NavBar user={"jack"} />
     </React.Fragment>
   );
 };
