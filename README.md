@@ -2,8 +2,8 @@
 
 web app where you can rate/review governments 👌
 
-backend is a JavaScript/Node.js API using the Express framework
+frontend uses React, Sass, Webpack, Babel etc.
 
-frontend uses React
+backend is a JavaScript/Node.js API using the Express framework
 
 and a mySQL database :)
