@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
+import NavBar from "./navBar";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>luls</h1>
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <React.Fragment>
+      <NavBar />
+    </React.Fragment>
+  );
+};
 
 export default App;
