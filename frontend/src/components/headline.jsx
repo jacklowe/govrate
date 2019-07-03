@@ -1,6 +1,6 @@
 import React from "react";
 
-const Slogan = () => {
+const Headline = () => {
   return (
     <p>
       Rate your Governments!{" "}
@@ -11,4 +11,4 @@ const Slogan = () => {
   );
 };
 
-export default Slogan;
+export default Headline;
