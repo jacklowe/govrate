@@ -6,10 +6,14 @@ const GovsTable = () => {
       <thead>
         <tr>
           <td>Country</td>
-          <td>Average Rating</td>
+          <td>Rating</td>
         </tr>
       </thead>
-      <tbody />
+      <tbody>
+        <td>UK</td>
+        <td>3.2</td>
+        <td>Review</td>
+      </tbody>
     </table>
   );
 };
