@@ -16,7 +16,7 @@ const NavBar = ({ user }) => {
 
   return (
     <nav>
-      <a href="#">GovRate</a>
+      GovRate
       {user ? authenticated : notAuthenticated}
     </nav>
   );

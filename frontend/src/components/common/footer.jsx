@@ -1,7 +1,7 @@
 import React from "react";
 
 const Footer = () => {
-  return <p>copyright govrate this.year</p>;
+  return <footer>copyright govrate this.year</footer>;
 };
 
 export default Footer;
