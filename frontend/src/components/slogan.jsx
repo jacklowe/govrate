@@ -3,7 +3,7 @@ import React from "react";
 const Slogan = () => {
   return (
     <p>
-      Rate your Government!{" "}
+      Rate your Governments!{" "}
       <span role="img" aria-label="emoji">
         😈
       </span>
