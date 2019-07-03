@@ -12,7 +12,7 @@ import "./App.css";
 const App = () => {
   return (
     <React.Fragment>
-      <NavBar user={"jack"} />
+      <NavBar user={null} />
       <main className="container">
         <Switch>
           <Route path="/govs" component={Govs} />

@@ -1,7 +1,13 @@
 import React from "react";
+import Slogan from "./slogan";
 
 const Govs = () => {
-  return <p>this is the main govs component</p>;
+  return (
+    <section>
+      <Slogan />
+      <p>govs table</p>
+    </section>
+  );
 };
 
 export default Govs;

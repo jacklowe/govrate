@@ -1,7 +1,9 @@
 import React from "react";
 
 const Footer = () => {
-  return <footer>copyright govrate this.year</footer>;
+  const date = new Date();
+  const year = date.getFullYear();
+  return <footer>&copy; GovRate {year}</footer>;
 };
 
 export default Footer;
