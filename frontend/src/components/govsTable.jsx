@@ -1,19 +1,12 @@
 import React from "react";
+import TableHeader from "./tableHeader";
+import TableBody from "./tableBody";
 
-const GovsTable = () => {
+const GovsTable = ({ govs }) => {
   return (
     <table>
-      <thead>
-        <tr>
-          <td>Country</td>
-          <td>Rating</td>
-        </tr>
-      </thead>
-      <tbody>
-        <td>UK</td>
-        <td>3.2</td>
-        <td>Review</td>
-      </tbody>
+      <TableHeader />
+      <TableBody govs={govs} />
     </table>
   );
 };
