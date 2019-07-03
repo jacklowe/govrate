@@ -1,14 +1,14 @@
 import React from "react";
 import Headline from "./headline";
 import GovsTable from "./govsTable";
+import SearchBox from "./common/searchBox";
 
 const Govs = () => {
   return (
     <section>
       <Headline />
-      <p>Search box here...</p>
+      <SearchBox />
       <GovsTable />
-      <p>govs table</p>
     </section>
   );
 };
