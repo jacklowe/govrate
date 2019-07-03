@@ -5,7 +5,7 @@ const Footer = () => {
   const year = date.getFullYear();
   return (
     <footer>
-      <p>&copy; GovRate {year}</p>
+      <p>&copy; GovRate, {year}.</p>
       <p>
         <a href="https://github.com/jacklowe/govrate">github icon</a>
       </p>

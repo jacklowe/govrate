@@ -1,12 +1,12 @@
 import React from "react";
 import Headline from "./headline";
-import Table from "./common/table";
+import GovsTable from "./common/govsTable";
 
 const Govs = () => {
   return (
     <section>
       <Headline />
-      <Table />
+      <GovsTable />
       <p>govs table</p>
     </section>
   );
