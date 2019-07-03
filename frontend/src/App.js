@@ -1,8 +1,10 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import NavBar from "./components/common/navBar";
+import Govs from "./components/govs";
 import Footer from "./components/common/footer";
 import RegisterForm from "./components/common/registerForm";
+import LoginForm from "./components/common/loginForm";
 import NotFound from "./components/common/notFound";
 import "./App.css";
 
@@ -12,9 +14,13 @@ const App = () => {
       <NavBar user={"jack"} />
       <main className="container">
         <Switch>
-          <Route exact path="/" component={NavBar} />
+          <Route path="/govs" component={Govs} />
           <Route path="/register" component={RegisterForm} />
+          <Route path="/login" component={LoginForm} />
           <Route path="/not-found" component={NotFound} />
+
+          {/* Redirects */}
+          <Redirect from="/" exact to="/govs" />
           <Redirect to="/not-found" />
         </Switch>
       </main>
