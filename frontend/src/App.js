@@ -5,6 +5,7 @@ import Govs from "./components/govs";
 import Footer from "./components/common/footer";
 import RegisterForm from "./components/common/registerForm";
 import LoginForm from "./components/common/loginForm";
+import Logout from "./components/common/logout";
 import NotFound from "./components/common/notFound";
 import "./App.css";
 
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/govs" component={Govs} />
           <Route path="/register" component={RegisterForm} />
           <Route path="/login" component={LoginForm} />
+          <Route path="/logout" component={Logout} />
           <Route path="/not-found" component={NotFound} />
 
           {/* Redirects */}
