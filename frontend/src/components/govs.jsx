@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Headline from "./headline";
 import GovsTable from "./govsTable";
-import SearchBox from "./common/searchBox";
+import SearchBox from "./searchBox";
 
 const Govs = () => {
   const [govs, setGovs] = useState([

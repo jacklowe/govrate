@@ -1,13 +1,12 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import NavBar from "./components/common/navBar";
+import NavBar from "./components/navBar";
 import Govs from "./components/govs";
-import Footer from "./components/common/footer";
-import RegisterForm from "./components/common/registerForm";
-import LoginForm from "./components/common/loginForm";
-import Logout from "./components/common/logout";
-import NotFound from "./components/common/notFound";
-import "./App.css";
+import Footer from "./components/footer";
+import RegisterForm from "./components/registerForm";
+import LoginForm from "./components/loginForm";
+import Logout from "./components/logout";
+import NotFound from "./components/notFound";
 
 const App = () => {
   return (
