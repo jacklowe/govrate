@@ -1,4 +1,4 @@
-this is the folder for the frontend. 
+this is the folder for the frontend. uses React & Redux
 
 originally created project from scratch i.e. with Webpack and Babel etc. without create-react-app,
 
