@@ -16,27 +16,27 @@ import Input from "./formInput";
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: {} };
+    this.state = { user: {} };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    const data = { ...this.state.data };
-    data[e.currentTarget.name] = e.currentTarget.value;
+    const user = { ...this.state.data };
+    user[e.currentTarget.name] = e.currentTarget.value;
 
-    this.setState({ data });
+    this.setState({ user });
   }
 
   handleSubmit(e) {
-    alert(this.state.data.email + this.state.data.password);
+    alert(this.state.user.email + this.state.user.password);
     // do auth stuff...
     e.preventDefault();
   }
 
   render() {
-    const { data } = this.state;
+    const { user } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="password">
@@ -44,14 +44,14 @@ class LoginForm extends React.Component {
             type={"text"}
             name={"email"}
             placeholder={"email"}
-            value={data["email"]}
+            value={user["email"]}
             onChange={this.handleChange}
           />
           <Input
             type={"password"}
             name={"password"}
             placeholder={"Password"}
-            value={data["password"]}
+            value={user["password"]}
             onChange={this.handleChange}
           />
         </label>
