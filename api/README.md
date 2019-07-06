@@ -12,6 +12,6 @@ a particular gov/Country
 
 index of reviews for a given gov
 
-## auth 
+## other endpoints
 
-along with some other (mainly auth) endpoints
+some other endpoints e.g. auth and post/update/delete stuff for users/govs
