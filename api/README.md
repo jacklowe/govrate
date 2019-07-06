@@ -1,5 +1,3 @@
-# api
-
 uses Express framework to serve json API data from mySQL database
 
 ## /govs 
