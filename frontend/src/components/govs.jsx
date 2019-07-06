@@ -22,13 +22,20 @@ const Govs = () => {
       averageRating: 3.2
     }
   ]);
+  const [filteredGovs, setFilteredGovs] = useState(govs);
 
   const handleQueryChange = e => {
     setSearchQuery(e.target.value);
   };
 
   useEffect(() => {
-    console.log(searchQuery);
+    const length = searchQuery.length;
+
+    const filteredGovs = [...govs].filter(
+      gov =>
+        gov.country.slice(0, length).toLowerCase() === searchQuery.toLowerCase()
+    );
+    setFilteredGovs(filteredGovs);
   }, [searchQuery]);
 
   return (
@@ -38,7 +45,7 @@ const Govs = () => {
         searchQuery={searchQuery}
         handleQueryChange={handleQueryChange}
       />
-      <GovsTable govs={govs} />
+      <GovsTable govs={filteredGovs} />
     </section>
   );
 };
