@@ -26,6 +26,7 @@ const Govs = () => {
   const handleQueryChange = e => {
     setSearchQuery(e.target.value);
   };
+
   return (
     <section>
       <Headline />
