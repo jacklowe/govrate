@@ -20,6 +20,11 @@ const Govs = () => {
       id: 3,
       country: "Germany",
       averageRating: 3.2
+    },
+    {
+      id: 4,
+      country: "France",
+      averageRating: 4.2
     }
   ]);
   const [filteredGovs, setFilteredGovs] = useState(govs);
@@ -30,13 +35,13 @@ const Govs = () => {
 
   useEffect(() => {
     const length = searchQuery.length;
+    const query = searchQuery.toLowerCase();
 
     const filteredGovs = [...govs].filter(
-      gov =>
-        gov.country.slice(0, length).toLowerCase() === searchQuery.toLowerCase()
+      gov => query === gov.country.slice(0, length).toLowerCase()
     );
     setFilteredGovs(filteredGovs);
-  }, [searchQuery]);
+  }, [searchQuery, govs]);
 
   return (
     <section>
