@@ -2,7 +2,7 @@ uses Express framework to serve json API data from mySQL database
 
 ## /govs 
 
-index of Governments with average rating 
+index of Governments with average ratings
 
 ## /govs/:id
 
