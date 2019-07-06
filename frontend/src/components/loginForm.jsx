@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "./formInput";
-import Message from "./Message";
+import Message from "./message";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");

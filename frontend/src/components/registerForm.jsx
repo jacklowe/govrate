@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Message from "./Message";
+import Message from "./message";
 import Input from "./formInput";
 
 const RegisterForm = () => {
@@ -26,7 +26,7 @@ const RegisterForm = () => {
 
   return (
     <React.Fragment>
-      <Message message="Sign up to GovRate!" />
+      <Message message="Sign up! 😄" />
       <form onSubmit={handleSubmit}>
         <Input
           htmlFor="username"
