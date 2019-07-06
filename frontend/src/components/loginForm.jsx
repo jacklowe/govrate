@@ -37,12 +37,15 @@ const LoginForm = () => {
           htmlFor="password"
           type="password"
           name="password"
-          placeholder="Email"
+          placeholder="Password"
           value={password}
           onChange={handlePasswordChange}
         />
-        <Input type="submit" value="Sign in" />
+        <Input htmlFor="submit" type="submit" value="Sign in" />
       </form>
+      <p>
+        Don't have an account? <Link to="/register">Sign up</Link>
+      </p>
     </React.Fragment>
   );
 };
