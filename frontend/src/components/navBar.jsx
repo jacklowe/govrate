@@ -5,10 +5,10 @@ const NavBar = ({ user }) => {
   const notAuthenticated = (
     <ul>
       <li>
-        <Link to="/login">Log in</Link>
+        <Link to="/login">Sign in</Link>
       </li>
       <li>
-        <Link to="/register">Register</Link>
+        <Link to="/register">Sign up</Link>
       </li>
     </ul>
   );
@@ -17,7 +17,7 @@ const NavBar = ({ user }) => {
     <ul>
       <li>{user}</li>
       <li>
-        <Link to="/logout">Log Out</Link>
+        <Link to="/logout">Sign out</Link>
       </li>
     </ul>
   );

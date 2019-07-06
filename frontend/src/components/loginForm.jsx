@@ -1,54 +1,50 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Input from "./formInput";
+import Message from "./Message";
 
-class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: ""
-    };
+const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  const handleEmailChange = event => {
+    setEmail(event.target.value);
+  };
 
-  handleEmailChange(e) {
-    this.setState({ ...this.state, email: e.target.value });
-  }
+  const handlePasswordChange = event => {
+    setPassword(event.target.value);
+  };
 
-  handlePasswordChange(e) {
-    this.setState({ ...this.state, password: e.target.value });
-  }
+  const handleSubmit = event => {
+    alert(`${email} ${password}`);
+    // do auth stuff
+    event.preventDefault();
+  };
 
-  handleSubmit(e) {
-    alert(this.state.email + " " + this.state.password);
-    // do auth stuff...
-    e.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
+  return (
+    <React.Fragment>
+      <Message message="Sign into your account" />
+      <form onSubmit={handleSubmit}>
         <Input
-          type={"text"}
-          name={"email"}
-          placeholder={"email"}
-          value={this.state.email}
-          onChange={this.handleEmailChange}
+          htmlFor="email"
+          type="text"
+          name="email"
+          placeholder="Email"
+          value={email}
+          onChange={handleEmailChange}
         />
         <Input
-          type={"password"}
-          name={"password"}
-          placeholder={"Password"}
-          value={this.state.password}
-          onChange={this.handlePasswordChange}
+          htmlFor="password"
+          type="password"
+          name="password"
+          placeholder="Email"
+          value={password}
+          onChange={handlePasswordChange}
         />
-        <input type="submit" value="Log In" />
+        <Input type="submit" value="Sign in" />
       </form>
-    );
-  }
-}
+    </React.Fragment>
+  );
+};
 
 export default LoginForm;
