@@ -27,6 +27,10 @@ const Govs = () => {
     setSearchQuery(e.target.value);
   };
 
+  useEffect(() => {
+    console.log(searchQuery);
+  }, [searchQuery]);
+
   return (
     <section>
       <Headline />

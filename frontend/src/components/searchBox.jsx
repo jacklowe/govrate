@@ -1,7 +1,6 @@
 import React from "react";
 
 const SearchBox = ({ searchQuery, handleQueryChange }) => {
-  console.log(searchQuery);
   return (
     <input
       type="text"
