@@ -53,6 +53,9 @@ const RegisterForm = () => {
           onChange={handlePasswordChange}
         />
         <input htmlFor="submit" type="submit" value="Sign up" />
+        <p>
+          Already have an account? <Link to="/login">Sign in</Link>
+        </p>
       </form>
     </React.Fragment>
   );

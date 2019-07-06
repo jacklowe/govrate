@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Headline from "./headline";
 import GovsTable from "./govsTable";
 import SearchBox from "./searchBox";
 
 const Govs = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const [govs, setGovs] = useState([
     {
       id: 1,
@@ -22,10 +23,16 @@ const Govs = () => {
     }
   ]);
 
+  const handleQueryChange = e => {
+    setSearchQuery(e.target.value);
+  };
   return (
     <section>
       <Headline />
-      <SearchBox />
+      <SearchBox
+        searchQuery={searchQuery}
+        handleQueryChange={handleQueryChange}
+      />
       <GovsTable govs={govs} />
     </section>
   );
