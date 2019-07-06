@@ -6,11 +6,11 @@ index of Governments with average rating
 
 ## /govs/:id
 
-a particular Government/Country
+a particular gov/Country
 
 ## /govs/:id/reviews
 
-index of reviews for a given Government
+index of reviews for a given gov
 
 ## auth 
 
