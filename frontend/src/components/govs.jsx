@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { getGovs } from "../services/govService";
 import getPage from "../services/paginate";
 import Headline from "./headline";
@@ -9,7 +8,8 @@ import SearchBox from "./searchBox";
 const Govs = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [govs, setGovs] = useState([]);
-  const [filteredGovs, setFilteredGovs] = useState([]);
+  const [searchedGovs, setsearchedGovs] = useState([]);
+  const [pagedGovs, setPagedGovs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const pageLength = 5;
 
@@ -18,7 +18,7 @@ const Govs = () => {
   };
 
   const handlePageChange = newPage => {
-    const maxPage = Math.ceil(filteredGovs.length / pageLength);
+    const maxPage = Math.ceil(searchedGovs.length / pageLength);
     if (newPage < 1 || newPage > maxPage) return null;
     setCurrentPage(newPage);
   };
@@ -38,11 +38,12 @@ const Govs = () => {
     const searchedGovs = [...govs].filter(gov =>
       gov.country.toLowerCase().startsWith(query)
     );
+    setsearchedGovs(searchedGovs);
 
     // last argument is the number of items per page
     const pagedGovs = getPage(searchedGovs, currentPage, pageLength);
 
-    setFilteredGovs(pagedGovs);
+    setPagedGovs(pagedGovs);
   }, [searchQuery, currentPage, govs]);
 
   return (
@@ -52,7 +53,7 @@ const Govs = () => {
         searchQuery={searchQuery}
         handleQueryChange={handleQueryChange}
       />
-      <GovsTable govs={filteredGovs} />
+      <GovsTable govs={pagedGovs} />
       <ul style={{ listStyle: "none" }}>
         <li>
           <button onClick={() => handlePageChange(currentPage - 1)}>
