@@ -3,9 +3,10 @@ const reviews = require("../routes/reviews");
 const users = require("../routes/users");
 const auth = require("../routes/auth");
 const express = require("express");
+const config = require("../config");
 
 const accessControlHeader = function(req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", config.frontend.url);
   next();
 };
 
