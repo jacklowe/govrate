@@ -2,11 +2,17 @@ const express = require("express");
 const router = express.Router({ mergeParams: true });
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
-const { getGovs, addGov, deleteGov } = require("../models/gov");
+const { getGovById, getGovs, addGov, deleteGov } = require("../models/gov");
 
 router.get("/", async (req, res) => {
   const govs = await getGovs();
   res.json(govs);
+});
+
+router.get("/:govId", async (req, res) => {
+  const gov = await getGovById(req.params.govId);
+  if (!gov) res.status(404).send("No gov exists with the given id");
+  res.json(gov);
 });
 
 router.post("/", [auth, admin], async (req, res) => {

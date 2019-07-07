@@ -5,7 +5,7 @@ const TableBody = ({ govs }) => {
   const rows = govs.map(gov => (
     <tr key={gov.id}>
       <td>
-        <Link to="#">{gov.country}</Link>
+        <Link to={`/govs/${gov.id}`}>{gov.country}</Link>
       </td>
       <td>{gov.averageRating}</td>
       <td>

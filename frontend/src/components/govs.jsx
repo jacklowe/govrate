@@ -34,6 +34,11 @@ const Govs = () => {
   };
 
   useEffect(() => {
+    // fetch and set govs state from api
+
+    console.log("hello");
+  }, [govs]);
+  useEffect(() => {
     const length = searchQuery.length;
     const query = searchQuery.toLowerCase();
 
