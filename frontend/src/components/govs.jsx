@@ -23,11 +23,10 @@ const Govs = () => {
   }, []);
 
   useEffect(() => {
-    const length = searchQuery.length;
     const query = searchQuery.toLowerCase();
 
-    const filteredGovs = [...govs].filter(
-      gov => query === gov.country.slice(0, length).toLowerCase()
+    const filteredGovs = [...govs].filter(gov =>
+      gov.country.toLowerCase().startsWith(query)
     );
     setFilteredGovs(filteredGovs);
   }, [searchQuery, govs]);
