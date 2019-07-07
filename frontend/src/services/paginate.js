@@ -8,8 +8,10 @@ export default function(data, pageNum, pageLength) {
   if (pageNum < 1 || pageNum > maxPageLength) {
     return [];
   }
+  
   for (let i = startIndex; i < endIndex; i++) {
     page.push(data[i]);
   }
+  
   return page;
 }
