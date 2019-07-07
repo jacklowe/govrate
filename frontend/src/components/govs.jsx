@@ -6,28 +6,7 @@ import SearchBox from "./searchBox";
 
 const Govs = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [govs, setGovs] = useState([
-    {
-      id: 1,
-      country: "UK",
-      averageRating: 3.2
-    },
-    {
-      id: 2,
-      country: "USA",
-      averageRating: 3.2
-    },
-    {
-      id: 3,
-      country: "Germany",
-      averageRating: 3.2
-    },
-    {
-      id: 4,
-      country: "France",
-      averageRating: 4.2
-    }
-  ]);
+  const [govs, setGovs] = useState([]);
   const [filteredGovs, setFilteredGovs] = useState(govs);
 
   const handleQueryChange = e => {
