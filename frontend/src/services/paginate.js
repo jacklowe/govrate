@@ -1,7 +1,7 @@
 export default function(data, pageNum, pageLength) {
   const maxPageLength = Math.ceil(data.length / pageLength);
 
-  const page = [];
+  let page = [];
   const startIndex = (pageNum - 1) * pageLength;
   const endIndex = Math.min(startIndex + pageLength, data.length);
 
