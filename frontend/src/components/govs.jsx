@@ -40,7 +40,6 @@ const Govs = () => {
     );
     setsearchedGovs(searchedGovs);
 
-    // last argument is the number of items per page
     const pagedGovs = getPage(searchedGovs, currentPage, pageLength);
 
     setPagedGovs(pagedGovs);
