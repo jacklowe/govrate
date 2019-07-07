@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getGovs } from "../services/govService";
+import getPage from "../services/paginate";
 import Headline from "./headline";
 import GovsTable from "./govsTable";
 import SearchBox from "./searchBox";
@@ -8,16 +9,18 @@ import SearchBox from "./searchBox";
 const Govs = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [govs, setGovs] = useState([]);
-  const [filteredGovs, setFilteredGovs] = useState(govs);
+  const [filteredGovs, setFilteredGovs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const pageLength = 5;
 
   const handleQueryChange = e => {
     setSearchQuery(e.target.value);
   };
 
   const handlePageChange = newPage => {
+    const maxPage = Math.ceil(filteredGovs.length / pageLength);
+    if (newPage < 1 || newPage > maxPage) return null;
     setCurrentPage(newPage);
-    console.log(currentPage);
   };
 
   const fetchGovs = async () => {
@@ -27,17 +30,20 @@ const Govs = () => {
 
   useEffect(() => {
     fetchGovs().then(g => setGovs(g));
-    // should also have currentPage as parameter in this fct call
-  }, [currentPage]);
+  }, []);
 
   useEffect(() => {
     const query = searchQuery.toLowerCase();
 
-    const filteredGovs = [...govs].filter(gov =>
+    const searchedGovs = [...govs].filter(gov =>
       gov.country.toLowerCase().startsWith(query)
     );
-    setFilteredGovs(filteredGovs);
-  }, [searchQuery, govs]);
+
+    // last argument is the number of items per page
+    const pagedGovs = getPage(searchedGovs, currentPage, pageLength);
+
+    setFilteredGovs(pagedGovs);
+  }, [searchQuery, currentPage, govs]);
 
   return (
     <section>
