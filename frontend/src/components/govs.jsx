@@ -14,11 +14,12 @@ const Govs = () => {
   const pageLength = 5;
 
   const handleQueryChange = e => {
+    setCurrentPage(1);
     setSearchQuery(e.target.value);
   };
 
+  const maxPage = Math.ceil(searchedGovs.length / pageLength);
   const handlePageChange = newPage => {
-    const maxPage = Math.ceil(searchedGovs.length / pageLength);
     if (newPage < 1 || newPage > maxPage) return null;
     setCurrentPage(newPage);
   };
@@ -53,13 +54,15 @@ const Govs = () => {
         handleQueryChange={handleQueryChange}
       />
       <GovsTable govs={pagedGovs} />
-      <ul style={{ listStyle: "none" }}>
+      <ul>
         <li>
           <button onClick={() => handlePageChange(currentPage - 1)}>
             Previous
           </button>
         </li>
-        <li>{currentPage}</li>
+        <li>
+          <button>{currentPage}</button>
+        </li>
         <li>
           <button onClick={() => handlePageChange(currentPage + 1)}>
             Next

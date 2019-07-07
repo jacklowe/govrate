@@ -45,6 +45,10 @@ const LoginForm = () => {
       </form>
       <p>
         Don't have an account? <Link to="/register">Sign up</Link>
+        <span role="img" aria-label="smiley emoji">
+          {" "}
+          😊
+        </span>
       </p>
     </React.Fragment>
   );
