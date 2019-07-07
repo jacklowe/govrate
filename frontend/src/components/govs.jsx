@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { getGovs } from "../services/govService";
 import Headline from "./headline";
 import GovsTable from "./govsTable";
 import SearchBox from "./searchBox";
@@ -33,11 +34,15 @@ const Govs = () => {
     setSearchQuery(e.target.value);
   };
 
-  useEffect(() => {
-    // fetch and set govs state from api
+  const fetchGovs = async () => {
+    const { data } = await getGovs();
+    return data;
+  };
 
-    console.log("hello");
-  }, [govs]);
+  useEffect(() => {
+    fetchGovs().then(g => setGovs(g));
+  }, []);
+
   useEffect(() => {
     const length = searchQuery.length;
     const query = searchQuery.toLowerCase();

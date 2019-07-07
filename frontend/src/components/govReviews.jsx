@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getReviews } from "../services/reviewService";
 import { getGov } from "../services/govService";
 
-const Gov = props => {
+const GovReviews = props => {
   const id = props.match.params.id;
   const [reviews, setReviews] = useState([]);
   const [gov, setGov] = useState("");
@@ -41,4 +41,4 @@ const Gov = props => {
   );
 };
 
-export default Gov;
+export default GovReviews;

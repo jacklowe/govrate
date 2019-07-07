@@ -8,7 +8,7 @@ import RegisterForm from "./components/registerForm";
 import LoginForm from "./components/loginForm";
 import Logout from "./components/logout";
 import NotFound from "./components/notFound";
-import Gov from "./components/gov";
+import GovReviews from "./components/govReviews";
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
       <main className="container">
         <Switch>
           <Route exact path="/govs" component={Govs} />
-          <Route path="/govs/:id" component={Gov} />
+          <Route path="/govs/:id/reviews" component={GovReviews} />
           <Route path="/register" component={RegisterForm} />
           <Route path="/login" component={LoginForm} />
           <Route path="/logout" component={Logout} />
