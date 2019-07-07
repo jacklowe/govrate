@@ -6,11 +6,14 @@ const Gov = props => {
   const [reviews, setReviews] = useState([]);
   // get gov reviews by id
   // so get request to /api/govs/1/reviews
+
+  const fetchReviews = async id => {
+    const { data } = await getReviews(id);
+    return data;
+  };
+
   useEffect(() => {
-    async function fetch() {
-      return await getReviews(id);
-    }
-    setReviews(fetch());
+    fetchReviews(id).then(r => setReviews(r));
   }, [id]);
 
   console.log(reviews);
