@@ -8,9 +8,14 @@ const Govs = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [govs, setGovs] = useState([]);
   const [filteredGovs, setFilteredGovs] = useState(govs);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleQueryChange = e => {
     setSearchQuery(e.target.value);
+  };
+
+  const handlePageChange = newPage => {
+    setCurrentPage(newPage);
   };
 
   const fetchGovs = async () => {
@@ -20,7 +25,8 @@ const Govs = () => {
 
   useEffect(() => {
     fetchGovs().then(g => setGovs(g));
-  }, []);
+    // should also have currentPage as parameter in this fct call
+  }, [currentPage]);
 
   useEffect(() => {
     const query = searchQuery.toLowerCase();
