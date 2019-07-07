@@ -16,6 +16,9 @@ const dev = {
   jwt: {
     privateKey: process.env.DEV_JWT_PRIVATE_KEY
   },
+  frontend: {
+    port: process.env.DEV_FRONTEND_PORT || 3000
+  },
   env: "dev"
 };
 
@@ -34,6 +37,9 @@ const test = {
   jwt: {
     privateKey:
       process.env.TEST_JWT_PRIVATE_KEY || process.env.DEV_JWT_PRIVATE_KEY
+  },
+  frontend: {
+    port: process.env.TEST_FRONTEND_PORT || 3000
   },
   env: "test"
 };
