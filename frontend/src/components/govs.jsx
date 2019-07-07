@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getGovs } from "../services/govService";
 import Headline from "./headline";
 import GovsTable from "./govsTable";
@@ -16,6 +17,7 @@ const Govs = () => {
 
   const handlePageChange = newPage => {
     setCurrentPage(newPage);
+    console.log(currentPage);
   };
 
   const fetchGovs = async () => {
@@ -45,6 +47,19 @@ const Govs = () => {
         handleQueryChange={handleQueryChange}
       />
       <GovsTable govs={filteredGovs} />
+      <ul style={{ listStyle: "none" }}>
+        <li>
+          <button onClick={() => handlePageChange(currentPage - 1)}>
+            Previous
+          </button>
+        </li>
+        <li>{currentPage}</li>
+        <li>
+          <button onClick={() => handlePageChange(currentPage + 1)}>
+            Next
+          </button>
+        </li>
+      </ul>
     </section>
   );
 };
