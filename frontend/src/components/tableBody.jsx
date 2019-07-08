@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import StarRating from "./starRating";
 
 const TableBody = ({ govs }) => {
   const rows = govs.map(gov => {
@@ -9,7 +10,9 @@ const TableBody = ({ govs }) => {
         <td>
           <Link to={`/govs/${govId}/reviews`}>{country}</Link>
         </td>
-        <td>{averageRating}</td>
+        <td>
+          <StarRating averageRating={averageRating} />
+        </td>
         <td>
           <Link to={`/govs/${govId}/reviews/new`}>
             <button>Review</button>

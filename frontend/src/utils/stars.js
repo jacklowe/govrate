@@ -1,6 +1,6 @@
 // this is a simple utility function to calculate
 // required "stars" to render based off rating
-export default function getStars(rating) {
+export default function(rating) {
   let stars = [];
   for (let i = 0; i < Math.ceil(rating); i++) {
     if (i + 1 > rating) {
