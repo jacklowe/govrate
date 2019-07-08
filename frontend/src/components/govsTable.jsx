@@ -13,7 +13,7 @@ const GovsTable = ({ govs }) => {
   if (!govs[0])
     content = (
       <p>
-        No matches{" "}
+        No matches
         <span role="img" aria-label="sad emoji">
           {" "}
           😞

@@ -9,6 +9,7 @@ import LoginForm from "./components/loginForm";
 import Logout from "./components/logout";
 import NotFound from "./components/notFound";
 import GovReviews from "./components/govReviews";
+import ReviewForm from "./components/reviewForm";
 
 const App = () => {
   return (
@@ -16,8 +17,9 @@ const App = () => {
       <NavBar user={null} />
       <main className="container">
         <Switch>
-          <Route exact path="/govs" component={Govs} />
+          <Route path="/govs/:id/reviews/new" component={ReviewForm} />
           <Route path="/govs/:id/reviews" component={GovReviews} />
+          <Route path="/govs" component={Govs} />
           <Route path="/register" component={RegisterForm} />
           <Route path="/login" component={LoginForm} />
           <Route path="/logout" component={Logout} />

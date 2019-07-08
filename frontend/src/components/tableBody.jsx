@@ -11,7 +11,7 @@ const TableBody = ({ govs }) => {
         </td>
         <td>{averageRating}</td>
         <td>
-          <Link to="/login">
+          <Link to={`/govs/${govId}/reviews/new`}>
             <button>Review</button>
           </Link>
         </td>
