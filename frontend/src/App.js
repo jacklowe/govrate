@@ -11,6 +11,12 @@ import NotFound from "./components/notFound";
 import GovReviews from "./components/govReviews";
 import ReviewForm from "./components/reviewForm";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faStarReg } from "@fortawesome/free-regular-svg-icons";
+
+library.add(faStar, faStarReg, faStarHalfAlt);
+
 const App = () => {
   return (
     <React.Fragment>

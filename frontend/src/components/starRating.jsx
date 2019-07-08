@@ -1,23 +1,31 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const StarRating = ({ averageRating }) => {
-  const starsArr = getStars(averageRating);
-  console.log(starsArr);
+  const iconNames = getIconNames(averageRating);
 
-  return <span>stars component</span>;
+  const content = iconNames.map(iconName => {
+    const index = iconName[1];
+    return (
+      <span key={index}>
+        <FontAwesomeIcon icon={iconName[0]} />
+      </span>
+    );
+  });
+  return content;
 };
 
-function getStars(rating) {
-  let stars = [];
+function getIconNames(rating) {
+  let classes = [];
   for (let i = 0; i < 5; i++) {
     if (i + 1 > rating) {
       const difference = i + 1 - rating;
-      if (difference <= 0.5) stars.push("half star");
-      else stars.push("star outline");
+      if (difference <= 0.5) classes.push([["fas", "star-half-alt"], i]);
+      else classes.push([["far", "star"], i]);
     } else {
-      stars.push("star");
+      classes.push([["fas", "star"], i]);
     }
   }
-  return stars;
+  return classes;
 }
 export default StarRating;
