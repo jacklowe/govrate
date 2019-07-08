@@ -1,8 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const StarRating = ({ averageRating }) => {
-  const iconNames = getIconNames(averageRating);
+const Stars = ({ rating }) => {
+  const iconNames = getIconNames(rating);
 
   const content = iconNames.map(iconName => {
     const index = iconName[1];
@@ -28,4 +28,4 @@ function getIconNames(rating) {
   }
   return classes;
 }
-export default StarRating;
+export default Stars;

@@ -11,11 +11,12 @@ import NotFound from "./components/notFound";
 import GovReviews from "./components/govReviews";
 import ReviewForm from "./components/reviewForm";
 
+/* ICON STUFF*/
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faStar as faStarReg } from "@fortawesome/free-regular-svg-icons";
-
-library.add(faStar, faStarReg, faStarHalfAlt);
+library.add(faStar, faStarReg, faStarHalfAlt, faGithub);
 
 const App = () => {
   return (

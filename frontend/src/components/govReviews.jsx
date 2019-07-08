@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getReviews } from "../services/reviewService";
 import { getGov } from "../services/govService";
+import Stars from "./stars";
 
 const GovReviews = props => {
   const id = props.match.params.id;
@@ -25,9 +26,10 @@ const GovReviews = props => {
   let reviewElement = reviews.map(review => {
     return (
       <React.Fragment key={review.id}>
-        <h3>
-          {review.username}: {review.rating}
-        </h3>
+        <h3>{review.username}</h3>
+        <span>
+          <Stars rating={review.rating} /> <span>({review.rating})</span>
+        </span>
         <p>{review.body}</p>
       </React.Fragment>
     );
