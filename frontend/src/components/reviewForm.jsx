@@ -26,7 +26,7 @@ const ReviewForm = () => {
 
   return (
     <React.Fragment>
-      <Message message="Write a reviewwww" />
+      <Message message="Write a revieww" />
       <form onSubmit={handleSubmit}>
         <Input
           htmlFor="username"
