@@ -12,6 +12,7 @@ const TableBody = ({ govs }) => {
         </td>
         <td>
           <StarRating averageRating={averageRating} />
+          {averageRating && <span> ({averageRating})</span>}
         </td>
         <td>
           <Link to={`/govs/${govId}/reviews/new`}>
