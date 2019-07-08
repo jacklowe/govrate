@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const TableBody = ({ govs }) => {
-  console.log(govs);
   const rows = govs.map(gov => {
     const { govId, country, averageRating } = gov;
     return (
