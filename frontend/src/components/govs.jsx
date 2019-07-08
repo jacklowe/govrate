@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getGovs } from "../services/govService";
-import getPage from "../services/paginate";
+import getPage from "../utils/paginate";
 import Headline from "./headline";
 import GovsTable from "./govsTable";
 import SearchBox from "./searchBox";

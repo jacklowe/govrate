@@ -24,7 +24,7 @@ const GovReviews = props => {
 
   let reviewElement = reviews.map(review => {
     return (
-      <React.Fragment>
+      <React.Fragment key={review.id}>
         <h3>
           {review.username}: {review.rating}
         </h3>
@@ -35,7 +35,7 @@ const GovReviews = props => {
 
   return (
     <React.Fragment>
-      <h1>{gov.country}</h1>
+      <h2>{gov.country}</h2>
       {reviewElement}
     </React.Fragment>
   );

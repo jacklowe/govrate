@@ -24,7 +24,9 @@ const NavBar = ({ user }) => {
 
   return (
     <nav>
-      <Link to="/govs">GovRate</Link>
+      <Link to="/govs">
+        <h1>GovRate</h1>
+      </Link>
       {user ? authenticated : notAuthenticated}
     </nav>
   );
