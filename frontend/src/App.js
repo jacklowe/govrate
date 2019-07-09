@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.css";
 import { Route, Redirect, Switch } from "react-router-dom";
+
 import NavBar from "./components/navBar";
 import Govs from "./components/govs";
 import Footer from "./components/footer";
@@ -10,6 +10,8 @@ import Logout from "./components/logout";
 import NotFound from "./components/notFound";
 import GovReviews from "./components/govReviews";
 import ReviewForm from "./components/reviewForm";
+
+import "./App.css";
 
 /* ICON STUFF*/
 import { library } from "@fortawesome/fontawesome-svg-core";

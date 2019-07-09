@@ -1,14 +1,13 @@
-// this is a simple utility function to calculate
-// required "stars" to render based off rating
 export default function(rating) {
-  let stars = [];
-  for (let i = 0; i < Math.ceil(rating); i++) {
+  let classes = [];
+  for (let i = 0; i < 5; i++) {
     if (i + 1 > rating) {
       const difference = i + 1 - rating;
-      if (difference <= 0.5) stars.push("half star");
+      if (difference <= 0.5) classes.push([["fas", "star-half-alt"], i]);
+      else classes.push([["far", "star"], i]);
     } else {
-      stars.push("star");
+      classes.push([["fas", "star"], i]);
     }
   }
-  return stars;
+  return classes;
 }

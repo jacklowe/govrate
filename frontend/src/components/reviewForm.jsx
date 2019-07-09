@@ -2,55 +2,41 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Message from "./message";
 import Input from "./formInput";
+import StarsInput from "./stars";
 
 const ReviewForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rating, setRating] = useState(1);
+  const [reviewBody, setReviewBody] = useState("");
 
-  const handleEmailChange = e => {
-    setEmail(e.target.value);
+  const handleRatingChange = rating => {
+    setRating(rating);
+    console.log(rating);
   };
 
-  const handleUsernameChange = e => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = e => {
-    setPassword(e.target.value);
+  const handleReviewBodyChange = e => {
+    setReviewBody(e.target.value);
   };
 
   const handleSubmit = e => {
-    alert(`${username} ${email} ${password}`);
+    alert(`${username} ${rating} ${reviewBody}`);
   };
 
   return (
     <React.Fragment>
       <Message message="Write a revieww" />
       <form onSubmit={handleSubmit}>
-        <Input
-          htmlFor="username"
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-        <Input
-          htmlFor="email"
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <Input
-          htmlFor="password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePasswordChange}
+        <StarsInput rating={rating} handleRatingChange={handleRatingChange} />
+        <label htmlFor="review">Enter your review text here:</label>
+        <textarea
+          id="review"
+          name="review-body"
+          rows="5"
+          cols="33"
+          value={reviewBody}
+          onChange={handleReviewBodyChange}
         />
         <input htmlFor="submit" type="submit" value="Sign up" />
         <p>
