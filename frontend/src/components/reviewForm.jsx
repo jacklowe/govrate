@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Message from "./message";
-import Input from "./formInput";
-import StarsInput from "./stars";
+import Stars from "./stars";
 
 const ReviewForm = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(3);
   const [reviewBody, setReviewBody] = useState("");
 
   const handleRatingChange = rating => {
@@ -21,15 +16,21 @@ const ReviewForm = () => {
   };
 
   const handleSubmit = e => {
-    alert(`${username} ${rating} ${reviewBody}`);
+    e.preventDefault();
+    alert(`${rating} ${reviewBody}`);
   };
 
   return (
     <React.Fragment>
-      <Message message="Write a revieww" />
+      <Message message="Write a review! 👊" />
       <form onSubmit={handleSubmit}>
-        <StarsInput rating={rating} handleRatingChange={handleRatingChange} />
-        <label htmlFor="review">Enter your review text here:</label>
+        <label htmlFor="rating">Click on your desired star rating</label>
+        <Stars
+          name="rating"
+          rating={rating}
+          handleRatingChange={handleRatingChange}
+        />
+        <label htmlFor="review">Enter your review in the text box</label>
         <textarea
           id="review"
           name="review-body"
@@ -39,10 +40,8 @@ const ReviewForm = () => {
           onChange={handleReviewBodyChange}
         />
         <input htmlFor="submit" type="submit" value="Sign up" />
-        <p>
-          Already have an account? <Link to="/login">Sign in</Link>
-        </p>
       </form>
+      <p>Already reviewed this State? You can't do it twice!</p>
     </React.Fragment>
   );
 };
