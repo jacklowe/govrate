@@ -8,7 +8,7 @@ const Footer = () => {
   const year = date.getFullYear();
   return (
     <footer className="Footer">
-      <p>&copy; GovRate, {year}.</p>
+      <p>GovRate, {year}.</p>
       <p>
         <a href="https://github.com/jacklowe/govrate">
           <FontAwesomeIcon icon={["fab", "github"]} />

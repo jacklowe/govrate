@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Message from "./message";
 import Stars from "./stars";
 
-const ReviewForm = () => {
+const ReviewForm = ({ props }) => {
   const [rating, setRating] = useState(3);
   const [reviewBody, setReviewBody] = useState("");
+  // i need the gov info hereeeeeeeeeee reeeeeeeeee
 
   const handleRatingChange = rating => {
     setRating(rating);

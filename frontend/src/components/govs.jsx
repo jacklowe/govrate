@@ -11,7 +11,7 @@ const Govs = () => {
   const [searchedGovs, setsearchedGovs] = useState([]);
   const [pagedGovs, setPagedGovs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageLength = 5;
+  const pageLength = 6;
 
   const handleQueryChange = e => {
     setCurrentPage(1);

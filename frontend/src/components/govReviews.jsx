@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getReviews } from "../services/reviewService";
 import { getGov } from "../services/govService";
 import Stars from "./stars";
@@ -39,6 +40,11 @@ const GovReviews = props => {
     <React.Fragment>
       <h2>{gov.country}</h2>
       {reviewElement}
+      <p>
+        <Link to={`/govs/${id}/reviews/new`}>
+          <button>Write your own!</button>
+        </Link>
+      </p>
     </React.Fragment>
   );
 };
