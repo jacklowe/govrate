@@ -1,4 +1,4 @@
-import { MATH_ADD, MATH_SUBTRACT } from "../actions/actionTypes";
+import { MATH_ADD, MATH_SUBTRACT } from "../actions/types";
 
 const mathReducer = (
   state = {

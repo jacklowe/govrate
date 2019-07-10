@@ -1,4 +1,4 @@
-import { MATH_ADD, MATH_SUBTRACT } from "./actionTypes";
+import { MATH_ADD, MATH_SUBTRACT } from "./types";
 
 export function addNumber(number) {
   return {

@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import NavBar from "./components/navBar";
-import Govs from "./components/govs";
-import Footer from "./components/footer";
-import RegisterForm from "./components/registerForm";
-import LoginForm from "./components/loginForm";
-import Logout from "./components/logout";
-import NotFound from "./components/notFound";
-import GovReviews from "./components/govReviews";
-import ReviewForm from "./components/reviewForm";
+import NavBar from "../components/navBar";
+import Govs from "../components/govs";
+import Footer from "../components/footer";
+import RegisterForm from "../components/registerForm";
+import LoginForm from "../components/loginForm";
+import Logout from "../components/logout";
+import NotFound from "../components/notFound";
+import GovReviews from "../components/govReviews";
+import ReviewForm from "../components/reviewForm";
 import "./App.css";
 
 /* REDUX STUFF */
 import { connect } from "react-redux";
-import { addNumber } from "./redux/actions/mathActions";
+import { addNumber } from "../redux/actions/mathActions";
 
 /* ICON STUFF*/
 import { library } from "@fortawesome/fontawesome-svg-core";
