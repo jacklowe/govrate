@@ -14,6 +14,7 @@ import "./App.css";
 /* REDUX STUFF */
 import { connect } from "react-redux";
 import { addNumber } from "../redux/actions/mathActions";
+import { fetchGov } from "../redux/actions/govActions";
 
 /* ICON STUFF*/
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -22,10 +23,11 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faStar as faStarReg } from "@fortawesome/free-regular-svg-icons";
 library.add(faStar, faStarReg, faStarHalfAlt, faGithub);
 
-const App = ({ addNumber, number }) => {
+const App = ({ addNumber, number, fetchGov, gov }) => {
   useEffect(() => {
-    addNumber(1);
-  }, [addNumber]);
+    fetchGov(1);
+  }, [fetchGov]);
+  console.log(gov);
 
   return (
     <React.Fragment>
@@ -51,13 +53,16 @@ const App = ({ addNumber, number }) => {
 };
 
 const mapStateToProps = state => {
-  return { math: state.math.result };
+  return { number: state.math.result, gov: state.govs.gov };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     addNumber: number => {
       dispatch(addNumber(number));
+    },
+    fetchGov: id => {
+      dispatch(fetchGov(id));
     }
   };
 };
