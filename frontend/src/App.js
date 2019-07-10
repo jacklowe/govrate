@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-
 import NavBar from "./components/navBar";
 import Govs from "./components/govs";
 import Footer from "./components/footer";
@@ -10,8 +9,11 @@ import Logout from "./components/logout";
 import NotFound from "./components/notFound";
 import GovReviews from "./components/govReviews";
 import ReviewForm from "./components/reviewForm";
-
 import "./App.css";
+
+/* REDUX STUFF */
+import { connect } from "react-redux";
+import { addNumber } from "./redux/actions/mathActions";
 
 /* ICON STUFF*/
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -20,7 +22,11 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faStar as faStarReg } from "@fortawesome/free-regular-svg-icons";
 library.add(faStar, faStarReg, faStarHalfAlt, faGithub);
 
-const App = () => {
+const App = ({ addNumber, number }) => {
+  useEffect(() => {
+    addNumber(1);
+  }, [addNumber]);
+
   return (
     <React.Fragment>
       <NavBar user={null} />
@@ -44,4 +50,18 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = state => {
+  return { math: state.math.result };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addNumber: number => {
+      dispatch(addNumber(number));
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
