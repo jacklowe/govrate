@@ -9,7 +9,6 @@ const ReviewForm = ({ props }) => {
 
   const handleRatingChange = rating => {
     setRating(rating);
-    console.log(rating);
   };
 
   const handleReviewBodyChange = e => {
@@ -23,7 +22,7 @@ const ReviewForm = ({ props }) => {
 
   return (
     <React.Fragment>
-      <Message message="Write a review! 👊" />
+      <Message message="Write a review 👊" />
       <form onSubmit={handleSubmit}>
         <label htmlFor="rating">Click on your desired star rating</label>
         <Stars
