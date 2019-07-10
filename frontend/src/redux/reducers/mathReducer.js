@@ -1,12 +1,10 @@
 import { MATH_ADD, MATH_SUBTRACT } from "../actions/types";
 
-const mathReducer = (
-  state = {
-    result: 1,
-    lastValues: []
-  },
-  action
-) => {
+const initialState = {
+  result: 1,
+  lastValues: []
+};
+const mathReducer = (state = initialState, action) => {
   switch (action.type) {
     case MATH_ADD:
       state = {

@@ -25,8 +25,9 @@ const GovReviews = props => {
   }, [id]);
 
   let reviewElement = reviews.map(review => {
+    const { reviewId: id } = review;
     return (
-      <React.Fragment key={review.id}>
+      <React.Fragment key={id}>
         <h3>{review.username}</h3>
         <span>
           <Stars rating={review.rating} /> <span>({review.rating})</span>
