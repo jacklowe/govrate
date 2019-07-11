@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import NavBar from "../components/navBar";
 import Govs from "../components/govs";

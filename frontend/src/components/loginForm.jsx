@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Input from "./formInput";
 import Message from "./message";
@@ -37,6 +38,8 @@ const LoginForm = props => {
     doSubmit();
   };
 
+  console.log(auth.getCurrentUser());
+  if (auth.getCurrentUser()) return <Redirect to="/" />;
   return (
     <React.Fragment>
       <Message message="Sign into your account" />
