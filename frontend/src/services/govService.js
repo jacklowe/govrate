@@ -1,9 +1,10 @@
 import http from "./httpService";
+import { apiUrl } from "../config";
 
 export function getGov(id) {
-  return http.get(`http://localhost:8080/api/govs/${id}`);
+  return http.get(`${apiUrl}/govs/${id}`);
 }
 
 export function getGovs() {
-  return http.get(`http://localhost:8080/api/govs`);
+  return http.get(`${apiUrl}/govs`);
 }
