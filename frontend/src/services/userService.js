@@ -3,10 +3,10 @@ import { apiUrl } from "../config";
 
 const apiEndpoint = `${apiUrl}/users`;
 
-export function register(user) {
+export function register(email, username, password) {
   return http.post(apiEndpoint, {
-    email: user.username,
-    password: user.password,
-    username: user.name
+    email: email,
+    username: username,
+    password: password
   });
 }

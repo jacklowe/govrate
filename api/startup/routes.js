@@ -8,6 +8,7 @@ const cors = require("cors");
 
 corsOptions = {
   origin: config.frontend.url,
+  exposedHeaders: ["x-auth-token"],
   allowedHeaders: ["x-auth-token", "content-type"]
 };
 

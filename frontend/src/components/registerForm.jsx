@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { register } from "../services/userService";
+import auth from "../services/authService";
 import Message from "./message";
 import Input from "./formInput";
 
@@ -20,8 +22,19 @@ const RegisterForm = () => {
     setPassword(e.target.value);
   };
 
+  const doSubmit = async () => {
+    try {
+      const response = await register(email, username, password);
+      auth.loginWithJwt(response.headers["x-auth-token"]);
+      window.location = "/";
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
+    doSubmit();
     alert(`${username} ${email} ${password}`);
   };
 
