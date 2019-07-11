@@ -21,9 +21,9 @@ const ReviewForm = ({ fetchGov, gov, match }) => {
     setReviewBody(e.target.value);
   };
 
-  const doSubmit = () => {
-    // submit
-  };
+  // const doSubmit = () => {
+  //
+  // };
   const handleSubmit = e => {
     e.preventDefault();
     alert(`${rating} ${reviewBody}`);
@@ -53,7 +53,7 @@ const ReviewForm = ({ fetchGov, gov, match }) => {
           onChange={handleReviewBodyChange}
         />{" "}
         <br />
-        <input htmlFor="submit" type="submit" value="Sign up" />
+        <input htmlFor="submit" type="submit" value="Submit" />
       </form>
       <p>Already reviewed this State? You can't do it twice!</p>
     </React.Fragment>

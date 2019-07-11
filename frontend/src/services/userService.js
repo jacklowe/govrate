@@ -4,7 +4,7 @@ import { apiUrl } from "../config";
 const apiEndpoint = `${apiUrl}/users`;
 
 export function register(user) {
-  return http.post({
+  return http.post(apiEndpoint, {
     email: user.username,
     password: user.password,
     username: user.name

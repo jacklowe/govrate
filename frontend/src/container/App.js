@@ -26,8 +26,8 @@ library.add(faStar, faStarReg, faStarHalfAlt, faGithub);
 const App = ({ fetchUser, currentUser }) => {
   useEffect(() => {
     fetchUser();
-    console.log(currentUser);
-  }, []);
+  }, [fetchUser]);
+
   return (
     <React.Fragment>
       <NavBar user={currentUser} />
