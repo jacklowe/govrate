@@ -7,7 +7,7 @@ const NavBar = ({ user }) => {
   if (user) {
     navLinks = (
       <ul>
-        <li>{user.userId}</li>
+        <li>{user.username}</li>
         <li>
           <Link to="/logout">Sign out</Link>
         </li>

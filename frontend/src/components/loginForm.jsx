@@ -36,7 +36,6 @@ const LoginForm = props => {
     doSubmit();
   };
 
-  console.log(auth.getCurrentUser());
   if (auth.getCurrentUser()) return <Redirect to="/" />;
   return (
     <React.Fragment>
