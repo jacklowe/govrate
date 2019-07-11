@@ -4,7 +4,7 @@ import Input from "./formInput";
 import Message from "./message";
 import auth from "../services/authService";
 
-const LoginForm = () => {
+const LoginForm = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,10 +16,25 @@ const LoginForm = () => {
     setPassword(event.target.value);
   };
 
+  const doSubmit = async () => {
+    try {
+      await auth.login(email, password);
+      const { state } = props.location;
+      window.location = state ? state.from.pathname : "/";
+    } catch (e) {
+      if (e.response && e.response.status === 400) {
+        console.log(e);
+      }
+    }
+  };
+
   const handleSubmit = event => {
     alert(`${email} ${password}`);
-    // do auth stuff
+
+    // validate
+
     event.preventDefault();
+    doSubmit();
   };
 
   return (
