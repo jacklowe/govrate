@@ -30,9 +30,7 @@ const LoginForm = props => {
   };
 
   const handleSubmit = event => {
-    alert(`${email} ${password}`);
-
-    // validate
+    // validation first
 
     event.preventDefault();
     doSubmit();

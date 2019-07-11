@@ -21,6 +21,9 @@ const ReviewForm = ({ fetchGov, gov, match }) => {
     setReviewBody(e.target.value);
   };
 
+  const doSubmit = () => {
+    // submit
+  };
   const handleSubmit = e => {
     e.preventDefault();
     alert(`${rating} ${reviewBody}`);
@@ -39,7 +42,7 @@ const ReviewForm = ({ fetchGov, gov, match }) => {
           handleRatingChange={handleRatingChange}
         />
         <br />
-        <label htmlFor="review">Enter your review in the text box:</label>
+        <label htmlFor="review">Enter your review in the box:</label>
         <br />
         <textarea
           id="review"

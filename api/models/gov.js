@@ -8,7 +8,8 @@ async function getGovs() {
       ROUND(AVG(rating), 1) as averageRating
     FROM govs
     LEFT JOIN reviews USING (govId) 
-    GROUP BY govId;`
+    GROUP BY govId
+    ORDER BY averageRating DESC;`
   );
   return govs;
 }
