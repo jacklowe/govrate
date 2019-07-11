@@ -36,6 +36,7 @@ const RegisterForm = () => {
           value={username}
           onChange={handleUsernameChange}
         />
+        <br />
         <Input
           htmlFor="email"
           type="text"
@@ -44,6 +45,7 @@ const RegisterForm = () => {
           value={email}
           onChange={handleEmailChange}
         />
+        <br />
         <Input
           htmlFor="password"
           type="password"
@@ -52,6 +54,7 @@ const RegisterForm = () => {
           value={password}
           onChange={handlePasswordChange}
         />
+        <br />
         <input htmlFor="submit" type="submit" value="Sign up" />
         <p>
           Already have an account? <Link to="/login">Sign in</Link>

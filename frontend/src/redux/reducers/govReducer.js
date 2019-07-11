@@ -1,15 +1,15 @@
 import { FETCH_GOV } from "../actions/types";
 
 const initialState = {
-  gov: {}
+  currentGov: {}
 };
 
 const govReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_GOV:
       return {
-        ...state.gov,
-        gov: action.payload
+        ...state.currentGov,
+        currentGov: action.payload
       };
     default:
       return state;

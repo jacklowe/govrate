@@ -33,6 +33,7 @@ const LoginForm = () => {
           value={email}
           onChange={handleEmailChange}
         />
+        <br />
         <Input
           htmlFor="password"
           type="password"
@@ -41,6 +42,7 @@ const LoginForm = () => {
           value={password}
           onChange={handlePasswordChange}
         />
+        <br />
         <Input htmlFor="submit" type="submit" value="Sign in" />
       </form>
       <p>

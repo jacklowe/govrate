@@ -10,13 +10,13 @@ const GovReviews = props => {
   const [gov, setGov] = useState("");
 
   const fetchGov = async id => {
-    const { data } = await getGov(id);
-    return data;
+    const { data: gov } = await getGov(id);
+    return gov;
   };
 
   const fetchReviews = async id => {
-    const { data } = await getReviews(id);
-    return data;
+    const { data: reviews } = await getReviews(id);
+    return reviews;
   };
 
   useEffect(() => {

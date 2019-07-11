@@ -24,11 +24,6 @@ import { faStar as faStarReg } from "@fortawesome/free-regular-svg-icons";
 library.add(faStar, faStarReg, faStarHalfAlt, faGithub);
 
 const App = ({ addNumber, number, fetchGov, gov }) => {
-  useEffect(() => {
-    fetchGov(1);
-  }, [fetchGov]);
-  console.log(gov);
-
   return (
     <React.Fragment>
       <NavBar user={null} />
@@ -53,7 +48,7 @@ const App = ({ addNumber, number, fetchGov, gov }) => {
 };
 
 const mapStateToProps = state => {
-  return { number: state.math.result, gov: state.govs.gov };
+  return { number: state.math.result, gov: state.govs.currentGov };
 };
 
 const mapDispatchToProps = dispatch => {
