@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchGov } from "../redux/actions/govActions";
-import Message from "./message";
-import Stars from "./stars";
+import { postReview } from "../services/reviewService";
+import Message from "../components/message";
+import Stars from "../components/stars";
 
-const ReviewForm = ({ fetchGov, gov, match }) => {
+const ReviewForm = ({ fetchGov, gov, match, history }) => {
   const id = match.params.id;
   const [rating, setRating] = useState(3);
   const [reviewBody, setReviewBody] = useState("");
@@ -21,12 +22,20 @@ const ReviewForm = ({ fetchGov, gov, match }) => {
     setReviewBody(e.target.value);
   };
 
-  // const doSubmit = () => {
-  //
-  // };
+  const doSubmit = async () => {
+    try {
+      await postReview(rating, reviewBody, id);
+    } catch (e) {
+      console.error(e);
+    }
+    history.push(`/govs/${id}/reviews`);
+  };
+
   const handleSubmit = e => {
+    // validation
     e.preventDefault();
-    alert(`${rating} ${reviewBody}`);
+
+    doSubmit();
   };
 
   return (

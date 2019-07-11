@@ -21,6 +21,7 @@ router.post("/", [auth], async (req, res) => {
 
   const previousReview = await checkIfReviewed(userId, govId);
   if (previousReview) {
+    console.log("already reviewed");
     return res.status(400).send("You have already reviewed this gov");
   }
 

@@ -8,7 +8,7 @@ import LoginForm from "../components/loginForm";
 import Logout from "../components/logout";
 import NotFound from "../components/notFound";
 import GovReviews from "../components/govReviews";
-import ReviewForm from "../components/reviewForm";
+import ReviewForm from "./reviewForm";
 import "./App.css";
 
 /* REDUX STUFF */

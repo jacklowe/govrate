@@ -21,6 +21,7 @@ const RegisterForm = () => {
   };
 
   const handleSubmit = e => {
+    e.preventDefault();
     alert(`${username} ${email} ${password}`);
   };
 
@@ -64,4 +65,6 @@ const RegisterForm = () => {
   );
 };
 
+// redux notes
+// need user...
 export default RegisterForm;
