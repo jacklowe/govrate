@@ -4,9 +4,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { getGovs } = require("./gov");
 
-function generateAuthToken(userId, isAdmin) {
+function generateAuthToken(userId, username, isAdmin) {
   const token = jwt.sign(
-    { userId: userId, isAdmin: isAdmin },
+    { userId: userId, username: username, isAdmin: isAdmin },
     config.jwt.privateKey
   );
   return token;

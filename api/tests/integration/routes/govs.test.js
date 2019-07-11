@@ -38,7 +38,11 @@ describe("/api/govs", () => {
     });
 
     it("should return 403 if client is not admin", async () => {
-      const token = generateAuthToken(1, (isAdmin = false));
+      const token = generateAuthToken(
+        1,
+        (username = "jack"),
+        (isAdmin = false)
+      );
       const res = await request(server)
         .post("/api/govs")
         .set("x-auth-token", token)
@@ -48,7 +52,7 @@ describe("/api/govs", () => {
     });
 
     it("should save country if user is admin and logged in", async () => {
-      const token = generateAuthToken(1, (isAdmin = true));
+      const token = generateAuthToken(1, (username = "jack"), (isAdmin = true));
       await request(server)
         .post("/api/govs")
         .set("x-auth-token", token)
@@ -59,7 +63,7 @@ describe("/api/govs", () => {
     });
 
     it("should return the country if valid request", async () => {
-      const token = generateAuthToken(1, (isAdmin = true));
+      const token = generateAuthToken(1, (username = "jack"), (isAdmin = true));
       const res = await request(server)
         .post("/api/govs")
         .set("x-auth-token", token)
@@ -88,7 +92,11 @@ describe("/api/govs", () => {
 
     it("should return 403 if client is not admin", async () => {
       const { govId } = await getGov("UK");
-      const token = generateAuthToken(1, (isAdmin = false));
+      const token = generateAuthToken(
+        1,
+        (username = "jack"),
+        (isAdmin = false)
+      );
       const res = await request(server)
         .delete(`/api/govs/${govId}`)
         .set("x-auth-token", token)
@@ -99,7 +107,7 @@ describe("/api/govs", () => {
 
     it("should return 404 if no gov with given id if found", async () => {
       const govId = 0.5;
-      const token = generateAuthToken(1, (isAdmin = true));
+      const token = generateAuthToken(1, (username = "jack"), (isAdmin = true));
       const res = await request(server)
         .delete(`/api/govs/${govId}`)
         .set("x-auth-token", token)
@@ -110,7 +118,7 @@ describe("/api/govs", () => {
 
     it("should delete the genre if input is valid", async () => {
       const { govId } = await getGov("UK");
-      const token = generateAuthToken(1, (isAdmin = true));
+      const token = generateAuthToken(1, (username = "jack"), (isAdmin = true));
       await request(server)
         .delete(`/api/govs/${govId}`)
         .set("x-auth-token", token)
@@ -122,7 +130,7 @@ describe("/api/govs", () => {
 
     it("should return the removed gov", async () => {
       const { govId } = await getGov("UK");
-      const token = generateAuthToken(1, (isAdmin = true));
+      const token = generateAuthToken(1, (username = "jack"), (isAdmin = true));
       const res = await request(server)
         .delete(`/api/govs/${govId}`)
         .set("x-auth-token", token)

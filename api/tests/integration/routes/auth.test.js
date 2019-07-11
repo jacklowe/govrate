@@ -33,7 +33,7 @@ describe("/api/auth", () => {
   });
 
   it("should return 200 if token is valid", async () => {
-    const token = generateAuthToken(1, (isAdmin = true));
+    const token = generateAuthToken(1, (username = "jack"), (isAdmin = true));
     const res = await request(server)
       .post("/api/govs")
       .set("x-auth-token", token)

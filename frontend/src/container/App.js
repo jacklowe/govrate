@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import NavBar from "../components/navBar";
 import Govs from "../components/govs";
@@ -13,7 +13,7 @@ import "./App.css";
 
 /* REDUX STUFF */
 import { connect } from "react-redux";
-import { addNumber } from "../redux/actions/mathActions";
+import { fetchUser } from "../redux/actions/userActions";
 import { fetchGov } from "../redux/actions/govActions";
 
 /* ICON STUFF*/
@@ -23,10 +23,14 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faStar as faStarReg } from "@fortawesome/free-regular-svg-icons";
 library.add(faStar, faStarReg, faStarHalfAlt, faGithub);
 
-const App = ({ addNumber, number, fetchGov, gov }) => {
+const App = ({ fetchUser, currentUser }) => {
+  useEffect(() => {
+    fetchUser();
+    console.log(currentUser);
+  }, []);
   return (
     <React.Fragment>
-      <NavBar user={null} />
+      <NavBar user={currentUser} />
       <main className="container">
         <Switch>
           <Route path="/govs/:id/reviews/new" component={ReviewForm} />
@@ -48,13 +52,13 @@ const App = ({ addNumber, number, fetchGov, gov }) => {
 };
 
 const mapStateToProps = state => {
-  return { number: state.math.result, gov: state.govs.currentGov };
+  return { currentUser: state.user.currentUser, gov: state.govs.currentGov };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addNumber: number => {
-      dispatch(addNumber(number));
+    fetchUser: () => {
+      dispatch(fetchUser());
     },
     fetchGov: id => {
       dispatch(fetchGov(id));
