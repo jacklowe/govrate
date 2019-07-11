@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "./formInput";
 import Message from "./message";
+import auth from "../services/authService";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
