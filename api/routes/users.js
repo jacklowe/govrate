@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
   let user = req.body;
 
   if (await findUserByEmail(user.email)) {
-    return res.status(400).send("User already registered");
+    return res.status(400).send("Email already registered");
   }
 
   if (await findUserByUsername(user.username)) {

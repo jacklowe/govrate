@@ -86,17 +86,6 @@ const RegisterForm = () => {
       <Message message="Sign up! 😄" />
       <form onSubmit={handleSubmit}>
         <ValidationError error={errors.main} />
-        <label htmlFor="username">Username: </label>
-        <br />
-        <Input
-          htmlFor="username"
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-        <ValidationError error={errors.username} />
-        <br />
         <label htmlFor="email">Email: </label>
         <br />
         <Input
@@ -108,13 +97,24 @@ const RegisterForm = () => {
         />
         <ValidationError error={errors.email} />
         <br />
+        <label htmlFor="username">Username: </label>
+        <br />
+        <Input
+          htmlFor="username"
+          type="text"
+          name="username"
+          value={username}
+          onChange={handleUsernameChange}
+        />
+        <ValidationError error={errors.username} />
+        <br />
+
         <label htmlFor="password">Password</label>
         <br />
         <Input
           htmlFor="password"
           type="password"
           name="password"
-          placeholder="Password"
           value={password}
           onChange={handlePasswordChange}
         />
