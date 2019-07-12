@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Joi from "joi-browser";
+import validate from "../services/validationService";
 import { register } from "../services/userService";
 import auth from "../services/authService";
 import Message from "./message";
@@ -27,17 +28,6 @@ const RegisterForm = () => {
       .label("Password")
   };
 
-  const validate = (data, schema) => {
-    const options = { abortEarly: false };
-
-    const { error } = Joi.validate(data, schema, options);
-    if (!error) return null;
-
-    const errors = {};
-    for (let item of error.details) errors[item.path[0]] = item.message;
-    return errors;
-  };
-
   const handleEmailChange = e => {
     setEmail(e.target.value);
   };
@@ -57,12 +47,13 @@ const RegisterForm = () => {
       window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        setErrors({ ...errors, main: ex.response.data });
+        setErrors({ main: ex.response.data });
       }
     }
   };
 
   const handleSubmit = e => {
+    setErrors({});
     e.preventDefault();
 
     const errors = validate(
@@ -75,6 +66,7 @@ const RegisterForm = () => {
     );
 
     setErrors(errors || {});
+    console.log(errors);
 
     if (errors) return;
 
@@ -95,8 +87,8 @@ const RegisterForm = () => {
           value={email}
           onChange={handleEmailChange}
         />
-        <ValidationError error={errors.email} />
         <br />
+        <ValidationError error={errors.email} />
         <label htmlFor="username">Username: </label>
         <br />
         <Input
@@ -106,10 +98,9 @@ const RegisterForm = () => {
           value={username}
           onChange={handleUsernameChange}
         />
-        <ValidationError error={errors.username} />
         <br />
-
-        <label htmlFor="password">Password</label>
+        <ValidationError error={errors.username} />
+        <label htmlFor="password">Password: </label>
         <br />
         <Input
           htmlFor="password"
@@ -118,8 +109,8 @@ const RegisterForm = () => {
           value={password}
           onChange={handlePasswordChange}
         />
-        <ValidationError error={errors.password} />
         <br />
+        <ValidationError error={errors.password} />
         <input htmlFor="submit" type="submit" value="Sign up" />
         <p>
           Already have an account? <Link to="/login">Sign in</Link>

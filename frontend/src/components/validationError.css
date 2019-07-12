@@ -1,0 +1,6 @@
+.ValidationError {
+  font-size: 0.75rem;
+  color: red;
+  margin: 0;
+  font-style: italic;
+}
