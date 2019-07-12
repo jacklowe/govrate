@@ -1,14 +1,42 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Joi from "joi-browser";
 import { register } from "../services/userService";
 import auth from "../services/authService";
 import Message from "./message";
 import Input from "./formInput";
+import ValidationError from "./validationError";
 
 const RegisterForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const validate = (data, schema) => {
+    const options = { abortEarly: false };
+
+    const { error } = Joi.validate(data, schema, options);
+    if (!error) return null;
+
+    const errors = {};
+    for (let item of error.details) errors[item.path[0]] = item.message;
+    return errors;
+  };
+
+  const schema = {
+    email: Joi.string()
+      .required()
+      .email()
+      .label("Email"),
+    username: Joi.string()
+      .required()
+      .label("Username"),
+    password: Joi.string()
+      .required()
+      .min(6)
+      .label("Password")
+  };
 
   const handleEmailChange = e => {
     setEmail(e.target.value);
@@ -26,7 +54,7 @@ const RegisterForm = () => {
     try {
       const response = await register(email, username, password);
       auth.loginWithJwt(response.headers["x-auth-token"]);
-      window.location = "/";
+      // window.location = "/";
     } catch (ex) {
       console.log(ex);
     }
@@ -34,30 +62,47 @@ const RegisterForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    doSubmit();
+
+    const errors = validate(
+      {
+        email,
+        username,
+        password
+      },
+      schema
+    );
+
+    setErrors(errors || {});
+    // doSubmit();
   };
 
   return (
     <React.Fragment>
       <Message message="Sign up! 😄" />
       <form onSubmit={handleSubmit}>
+        <label htmlFor="username">Username: </label>
+        <br />
         <Input
           htmlFor="username"
           type="text"
           name="username"
-          placeholder="Username"
           value={username}
           onChange={handleUsernameChange}
         />
+        <ValidationError error={errors.username} />
+        <br />
+        <label htmlFor="email">Email: </label>
         <br />
         <Input
           htmlFor="email"
           type="text"
           name="email"
-          placeholder="Email"
           value={email}
           onChange={handleEmailChange}
         />
+        <ValidationError error={errors.email} />
+        <br />
+        <label htmlFor="password">Password</label>
         <br />
         <Input
           htmlFor="password"
@@ -67,6 +112,7 @@ const RegisterForm = () => {
           value={password}
           onChange={handlePasswordChange}
         />
+        <ValidationError error={errors.password} />
         <br />
         <input htmlFor="submit" type="submit" value="Sign up" />
         <p>
