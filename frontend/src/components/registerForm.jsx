@@ -76,6 +76,8 @@ const RegisterForm = () => {
 
     setErrors(errors || {});
 
+    if (errors) return;
+
     doSubmit();
   };
 
