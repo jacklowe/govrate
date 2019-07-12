@@ -1,7 +1,8 @@
 const {
   generateAuthToken,
   addUser,
-  findUserByEmail
+  findUserByEmail,
+  findUserByUsername
 } = require("../models/user");
 const express = require("express");
 const router = express.Router();
@@ -11,6 +12,10 @@ router.post("/", async (req, res) => {
 
   if (await findUserByEmail(user.email)) {
     return res.status(400).send("User already registered");
+  }
+
+  if (await findUserByUsername(user.username)) {
+    return res.status(400).send("Username is taken");
   }
 
   user = await addUser(user);

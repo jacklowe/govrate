@@ -13,17 +13,6 @@ const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
-  const validate = (data, schema) => {
-    const options = { abortEarly: false };
-
-    const { error } = Joi.validate(data, schema, options);
-    if (!error) return null;
-
-    const errors = {};
-    for (let item of error.details) errors[item.path[0]] = item.message;
-    return errors;
-  };
-
   const schema = {
     email: Joi.string()
       .required()
@@ -36,6 +25,17 @@ const RegisterForm = () => {
       .required()
       .min(6)
       .label("Password")
+  };
+
+  const validate = (data, schema) => {
+    const options = { abortEarly: false };
+
+    const { error } = Joi.validate(data, schema, options);
+    if (!error) return null;
+
+    const errors = {};
+    for (let item of error.details) errors[item.path[0]] = item.message;
+    return errors;
   };
 
   const handleEmailChange = e => {
@@ -54,9 +54,11 @@ const RegisterForm = () => {
     try {
       const response = await register(email, username, password);
       auth.loginWithJwt(response.headers["x-auth-token"]);
-      // window.location = "/";
+      window.location = "/";
     } catch (ex) {
-      console.log(ex);
+      if (ex.response && ex.response.status === 400) {
+        setErrors({ ...errors, main: ex.response.data });
+      }
     }
   };
 
@@ -73,13 +75,15 @@ const RegisterForm = () => {
     );
 
     setErrors(errors || {});
-    // doSubmit();
+
+    doSubmit();
   };
 
   return (
     <React.Fragment>
       <Message message="Sign up! 😄" />
       <form onSubmit={handleSubmit}>
+        <ValidationError error={errors.main} />
         <label htmlFor="username">Username: </label>
         <br />
         <Input

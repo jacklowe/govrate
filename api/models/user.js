@@ -49,6 +49,20 @@ async function findUserByEmail(email, sendPassword = false) {
   return user[0];
 }
 
+async function findUserByUsername(username) {
+  let user = await pool.query(
+    `SELECT
+      userId,
+      username,
+      email,
+      isAdmin
+    FROM users
+    WHERE username = ?`,
+    [username]
+  );
+  return user[0];
+}
+
 async function deleteUser(userId) {
   await pool.query(
     `DELETE FROM users
@@ -61,4 +75,5 @@ async function deleteUser(userId) {
 exports.generateAuthToken = generateAuthToken;
 exports.addUser = addUser;
 exports.findUserByEmail = findUserByEmail;
+exports.findUserByUsername = findUserByUsername;
 exports.deleteUser = deleteUser;
