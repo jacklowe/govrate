@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchGov } from "../redux/actions/govActions";
+import ValidationError from "../components/validationError";
 import { postReview } from "../services/reviewService";
 import Message from "../components/message";
 import Stars from "../components/stars";
@@ -9,6 +10,7 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
   const id = match.params.id;
   const [rating, setRating] = useState(3);
   const [reviewBody, setReviewBody] = useState("");
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     fetchGov(id);
@@ -25,14 +27,15 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
   const doSubmit = async () => {
     try {
       await postReview(rating, reviewBody, id);
-    } catch (e) {
-      console.error(e);
+      history.push(`/govs/${id}/reviews`);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        setErrors({ main: ex.response.data });
+      }
     }
-    history.push(`/govs/${id}/reviews`);
   };
 
   const handleSubmit = e => {
-    // validation
     e.preventDefault();
 
     doSubmit();
@@ -43,6 +46,7 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
       <h3>{gov.country}</h3>
       <Message message="Write a review 👊" />
       <form onSubmit={handleSubmit}>
+        <ValidationError error={errors.main} />
         <label htmlFor="rating">Click on your desired star rating:</label>
         <br />
         <Stars
