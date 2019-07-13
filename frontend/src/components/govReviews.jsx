@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchUser } from "../redux/actions/userActions";
 import { getReviews } from "../services/reviewService";
 import { getGov } from "../services/govService";
 import Stars from "./stars";
 
-const GovReviews = props => {
-  const id = props.match.params.id;
+const GovReviews = ({ match, currentUser }) => {
+  const id = match.params.id;
   const [reviews, setReviews] = useState([]);
   const [gov, setGov] = useState("");
 
@@ -22,6 +24,7 @@ const GovReviews = props => {
   useEffect(() => {
     fetchReviews(id).then(r => setReviews(r));
     fetchGov(id).then(g => setGov(g));
+    fetchUser();
   }, [id]);
 
   let reviewElement = reviews.map(review => {
@@ -37,12 +40,13 @@ const GovReviews = props => {
     );
   });
 
+  const linkAddress = currentUser ? `/govs/${id}/reviews/new` : "/login";
   return (
     <React.Fragment>
       <h2>{gov.country}</h2>
       {reviewElement}
       <p>
-        <Link to={`/govs/${id}/reviews/new`}>
+        <Link to={linkAddress}>
           <button>Write your own!</button>
         </Link>
       </p>
@@ -50,4 +54,19 @@ const GovReviews = props => {
   );
 };
 
-export default GovReviews;
+const mapStateToProps = state => {
+  return { currentUser: state.user.currentUser };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchUser: () => {
+      dispatch(fetchUser());
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GovReviews);

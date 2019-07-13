@@ -1,13 +1,27 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
+import Joi from "joi-browser";
+import validate from "../services/validationService";
 import { Link } from "react-router-dom";
 import Input from "./formInput";
 import Message from "./message";
 import auth from "../services/authService";
+import ValidationError from "./validationError";
 
 const LoginForm = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const schema = {
+    email: Joi.string()
+      .required()
+      .email()
+      .label("Email"),
+    password: Joi.string()
+      .required()
+      .label("Password")
+  };
 
   const handleEmailChange = event => {
     setEmail(event.target.value);
@@ -22,17 +36,22 @@ const LoginForm = props => {
       await auth.login(email, password);
       const { state } = props.location;
       window.location = state ? state.from.pathname : "/";
-    } catch (e) {
-      if (e.response && e.response.status === 400) {
-        console.log(e);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        setErrors({ main: ex.response.data });
       }
     }
   };
 
-  const handleSubmit = event => {
-    // validation first
+  const handleSubmit = e => {
+    setErrors({});
+    e.preventDefault();
 
-    event.preventDefault();
+    const errors = validate({ email, password }, schema);
+
+    setErrors(errors || {});
+    if (errors) return;
+
     doSubmit();
   };
 
@@ -41,6 +60,7 @@ const LoginForm = props => {
     <React.Fragment>
       <Message message="Sign into your account" />
       <form onSubmit={handleSubmit}>
+        <ValidationError error={errors.main} />
         <Input
           htmlFor="email"
           type="text"
@@ -50,6 +70,7 @@ const LoginForm = props => {
           onChange={handleEmailChange}
         />
         <br />
+        <ValidationError error={errors.email} />
         <Input
           htmlFor="password"
           type="password"
@@ -59,6 +80,7 @@ const LoginForm = props => {
           onChange={handlePasswordChange}
         />
         <br />
+        <ValidationError error={errors.password} />
         <Input htmlFor="submit" type="submit" value="Sign in" />
       </form>
       <p>

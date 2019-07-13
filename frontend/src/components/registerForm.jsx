@@ -66,7 +66,6 @@ const RegisterForm = () => {
     );
 
     setErrors(errors || {});
-    console.log(errors);
 
     if (errors) return;
 
