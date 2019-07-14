@@ -3,10 +3,10 @@ import { Redirect } from "react-router-dom";
 import Joi from "joi-browser";
 import validate from "../services/validationService";
 import { Link } from "react-router-dom";
-import Input from "./formInput";
-import Message from "./message";
+import Input from "./FormInput";
+import Message from "./Message";
 import auth from "../services/authService";
-import ValidationError from "./validationError";
+import ValidationError from "./ValidationError";
 
 const LoginForm = props => {
   const [email, setEmail] = useState("");

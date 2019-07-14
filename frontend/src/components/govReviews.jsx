@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchUser } from "../redux/actions/userActions";
 import { getReviews } from "../services/reviewService";
 import { getGov } from "../services/govService";
-import Stars from "./stars";
+import Stars from "./Stars";
 
 const GovReviews = ({ match, currentUser }) => {
   const id = match.params.id;

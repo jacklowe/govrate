@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchGov } from "../redux/actions/govActions";
-import ValidationError from "../components/validationError";
+import ValidationError from "../components/ValidationError";
 import { postReview } from "../services/reviewService";
-import Message from "../components/message";
-import Stars from "../components/stars";
+import Message from "../components/Message";
+import Stars from "../components/Stars";
 
 const ReviewForm = ({ fetchGov, gov, match, history }) => {
   const id = match.params.id;

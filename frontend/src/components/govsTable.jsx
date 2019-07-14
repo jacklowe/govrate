@@ -1,6 +1,6 @@
 import React from "react";
-import TableHeader from "./tableHeader";
-import TableBody from "../container/tableBody";
+import TableHeader from "./TableHeader";
+import TableBody from "../container/TableBody";
 
 const GovsTable = ({ govs }) => {
   let content = (

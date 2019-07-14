@@ -1,5 +1,5 @@
 import React from "react";
-import "./validationError.css";
+import "./ValidationError.css";
 
 const ValidationError = ({ error }) => {
   let content;

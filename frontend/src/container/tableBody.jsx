@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchUser } from "../redux/actions/userActions";
 import { connect } from "react-redux";
-import Stars from "../components/stars";
+import Stars from "../components/Stars";
 
 const TableBody = ({ govs, currentUser, fetchUser }) => {
   useEffect(() => {

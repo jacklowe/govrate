@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import NavBar from "../components/navBar";
-import Govs from "../components/govs";
-import Footer from "../components/footer";
-import RegisterForm from "../components/registerForm";
-import LoginForm from "../components/loginForm";
-import Logout from "../components/logout";
-import NotFound from "../components/notFound";
-import GovReviews from "../components/govReviews";
-import ReviewForm from "./reviewForm";
+import NavBar from "../components/NavBar";
+import Govs from "../components/Govs";
+import Footer from "../components/Footer";
+import RegisterForm from "../components/RegisterForm";
+import LoginForm from "../components/LoginForm";
+import Logout from "../components/Logout";
+import NotFound from "../components/NotFound";
+import GovReviews from "../components/GovReviews";
+import ReviewForm from "./ReviewForm";
 import "./App.css";
 
 /* REDUX STUFF */

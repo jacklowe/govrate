@@ -4,9 +4,9 @@ import Joi from "joi-browser";
 import validate from "../services/validationService";
 import { register } from "../services/userService";
 import auth from "../services/authService";
-import Message from "./message";
-import Input from "./formInput";
-import ValidationError from "./validationError";
+import Message from "./Message";
+import Input from "./FormInput";
+import ValidationError from "./ValidationError";
 
 const RegisterForm = () => {
   const [username, setUsername] = useState("");

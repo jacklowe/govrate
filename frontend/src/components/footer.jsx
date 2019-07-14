@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import "./footer.css";
+import "./Footer.css";
 
 const Footer = () => {
   const date = new Date();

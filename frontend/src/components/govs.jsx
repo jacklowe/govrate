@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getGovs } from "../services/govService";
 import getPage from "../utils/paginate";
-import Headline from "./headline";
-import GovsTable from "./govsTable";
-import SearchBox from "./searchBox";
+import Headline from "./Headline";
+import GovsTable from "./GovsTable";
+import SearchBox from "./SearchBox";
 
 const Govs = () => {
   const [searchQuery, setSearchQuery] = useState("");
