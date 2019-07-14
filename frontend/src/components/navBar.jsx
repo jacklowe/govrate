@@ -1,35 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "./NavBar.css";
+
 const NavBar = ({ user }) => {
   let navLinks;
 
   if (user) {
     navLinks = (
-      <ul>
-        <li>{user.username}</li>
-        <li>
-          <Link to="/logout">Sign out</Link>
+      <ul className="NavBar__list">
+        <li className="NavBar__element">{user.username}</li>
+        <li className="NavBar__element">
+          <Link className="NavBar__link" to="/logout">
+            Sign out
+          </Link>
         </li>
       </ul>
     );
   } else {
     navLinks = (
-      <ul>
-        <li>
-          <Link to="/login">Sign in</Link>
+      <ul className="NavBar__list">
+        <li className="NavBar__element">
+          <Link className="NavBar__link" to="/login">
+            Sign in
+          </Link>
         </li>
-        <li>
-          <Link to="/register">Sign up</Link>
+        <li className="NavBar__element">
+          <Link className="NavBar__link" to="/register">
+            Sign up
+          </Link>
         </li>
       </ul>
     );
   }
 
   return (
-    <nav>
-      <Link to="/govs">
-        <h1>GovRate</h1>
+    <nav className="NavBar">
+      <Link className="NavBar__link" to="/govs">
+        <h1 className="NavBar__title">GovRate</h1>
       </Link>
       {navLinks}
     </nav>
