@@ -8,12 +8,10 @@ const Footer = () => {
   const year = date.getFullYear();
   return (
     <footer className="Footer">
-      <p>GovRate, {year}.</p>
-      <p>
-        <a href="https://github.com/jacklowe/govrate">
-          <FontAwesomeIcon icon={["fab", "github"]} />
-        </a>
-      </p>
+      <p className="Footer__text">GovRate, {year}.</p>
+      <a className="Footer__icon" href="https://github.com/jacklowe/govrate">
+        <FontAwesomeIcon icon={["fab", "github"]} />
+      </a>
     </footer>
   );
 };
