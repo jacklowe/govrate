@@ -9,7 +9,9 @@ const NavBar = ({ handleMenuClick }) => {
         <h1 className="NavBar__title">GovRate</h1>
       </Link>
       <div className="NavBar__hamburger" onClick={handleMenuClick}>
-        H
+        <div className="NavBar__hamburger-line" />
+        <div className="NavBar__hamburger-line" />
+        <div className="NavBar__hamburger-line" />
       </div>
     </nav>
   );

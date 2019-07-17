@@ -13,7 +13,7 @@ const Navigation = ({ user }) => {
   return (
     <div>
       <NavBar handleMenuClick={handleMenuState} />
-      <NavMenu user={user} show={menuOpen} />
+      <NavMenu handleNavClick={handleMenuState} user={user} show={menuOpen} />
     </div>
   );
 };
