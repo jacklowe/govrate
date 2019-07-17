@@ -12,8 +12,8 @@ const Navigation = ({ user }) => {
 
   return (
     <div>
-      <NavBar user={user} handleMenuClick={handleMenuState} />
-      <NavMenu show={menuOpen} />
+      <NavBar handleMenuClick={handleMenuState} />
+      <NavMenu user={user} show={menuOpen} />
     </div>
   );
 };
