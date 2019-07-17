@@ -2,16 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./NavBar.css";
-const NavBar = ({ handleMenuClick }) => {
+const NavBar = ({ handleMenuClick, open }) => {
+  let lineClasses = open
+    ? "NavBar__hamburger-line open"
+    : "NavBar__hamburger-line";
   return (
     <nav className="NavBar">
       <Link className="NavBar__title-link" to="/govs">
         <h1 className="NavBar__title">GovRate</h1>
       </Link>
       <div className="NavBar__hamburger" onClick={handleMenuClick}>
-        <div className="NavBar__hamburger-line" />
-        <div className="NavBar__hamburger-line" />
-        <div className="NavBar__hamburger-line" />
+        <div className={lineClasses} />
+        <div className={lineClasses} />
+        <div className={lineClasses} />
       </div>
     </nav>
   );
