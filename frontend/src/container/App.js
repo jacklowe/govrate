@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import NavBar from "../components/NavBar";
+import Navigation from "../components/Navigation";
 import Govs from "../components/Govs";
 import Footer from "../components/Footer";
 import RegisterForm from "../components/RegisterForm";
@@ -30,7 +30,7 @@ const App = ({ fetchUser, currentUser }) => {
 
   return (
     <React.Fragment>
-      <NavBar user={currentUser} />
+      <Navigation user={currentUser} />
       <main className="container">
         <Switch>
           <Route path="/govs/:id/reviews/new" component={ReviewForm} />

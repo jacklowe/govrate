@@ -2,13 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./NavBar.css";
-const NavBar = ({ user }) => {
+const NavBar = ({ user, handleMenuClick }) => {
   let navLinks;
 
   if (user) {
     navLinks = (
       <ul className="NavBar__list">
-        <li className="NavBar__element">{user.username}</li>
+        <li onClick={handleMenuClick} className="NavBar__element">
+          {user.username}
+        </li>
         <li className="NavBar__element">
           <Link className="NavBar__link" to="/logout">
             Sign out
