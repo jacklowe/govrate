@@ -2,21 +2,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
   color: #fff;
-  border-bottom: 1px dotted white;
+  border-bottom: 1px dotted black;
   height: 50px;
 }
 
 .NavBar__title {
-  padding: 15px 0;
-  font-size: 2.5rem;
+  padding: 15px 6px;
+  font-size: 2rem;
+  font-family: babas-neue, sans-serif;
   margin: 0;
 }
 
 .NavBar__title-link {
-  color: #fff;
   text-decoration: none;
+  color: black;
 }
 
 .NavBar__hamburger {
@@ -29,7 +29,7 @@
 }
 
 .NavBar__hamburger-line {
-  background-color: white;
+  background-color: black;
   position: relative;
   right: -5px;
   transition: all 0.3s ease;
@@ -53,6 +53,9 @@
   height: 2px;
 }
 
+.NavBar__hamburger-line.open {
+  background-color: white;
+}
 .NavBar__hamburger-line:nth-child(1).open {
   top: 10px;
   transform: rotate(45deg);

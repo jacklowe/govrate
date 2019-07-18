@@ -15,7 +15,9 @@ const TableBody = ({ govs, currentUser, fetchUser }) => {
     return (
       <tr key={govId}>
         <td>
-          <Link to={`/govs/${govId}/reviews`}>{country}</Link>
+          <Link className="Link" to={`/govs/${govId}/reviews`}>
+            {country}
+          </Link>
         </td>
         <td>
           <Stars rating={averageRating} />

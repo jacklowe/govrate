@@ -13,7 +13,7 @@ const NavMenu = ({ show, user, handleNavClick }) => {
     navLinks = (
       <ul className={navClasses}>
         <li onClick={handleNavClick} className="NavBar__element">
-          <Link className="NavBar__link" to="/logout">
+          <Link className="NavBar__link Link" to="/logout">
             Sign out
           </Link>
         </li>
@@ -24,12 +24,12 @@ const NavMenu = ({ show, user, handleNavClick }) => {
     navLinks = (
       <ul className={navClasses}>
         <li onClick={handleNavClick} className="NavBar__element">
-          <Link className="NavBar__link" to="/login">
+          <Link className="NavBar__link Link" to="/login">
             Sign in
           </Link>
         </li>
         <li onClick={handleNavClick} className="NavBar__element">
-          <Link className="NavBar__link" to="/register">
+          <Link className="NavBar__link Link" to="/register">
             Sign up
           </Link>
         </li>

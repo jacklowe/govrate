@@ -27,7 +27,7 @@
 
 .NavBar__link {
   color: #fff;
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 
 .NavBar__list.open {
