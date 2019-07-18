@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { fetchUser } from "../redux/actions/userActions";
 import { connect } from "react-redux";
 import Stars from "../components/Stars";
+import Button from "../components/Button";
 
 const TableBody = ({ govs, currentUser, fetchUser }) => {
   useEffect(() => {
@@ -25,7 +26,7 @@ const TableBody = ({ govs, currentUser, fetchUser }) => {
         </td>
         <td>
           <Link to={linkAddress}>
-            <button>Review</button>
+            <Button text={"Review"} />
           </Link>
         </td>
       </tr>
