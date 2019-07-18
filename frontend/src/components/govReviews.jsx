@@ -42,7 +42,7 @@ const GovReviews = ({ match, currentUser }) => {
 
   const linkAddress = currentUser ? `/govs/${id}/reviews/new` : "/login";
   return (
-    <React.Fragment>
+    <div>
       <h2>{gov.country}</h2>
       {reviewElement}
       <p>
@@ -50,7 +50,7 @@ const GovReviews = ({ match, currentUser }) => {
           <button>Write your own!</button>
         </Link>
       </p>
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -73,7 +73,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <Message message="Sign up! 😄" />
       <form onSubmit={handleSubmit}>
         <ValidationError error={errors.main} />
@@ -115,7 +115,7 @@ const RegisterForm = () => {
           Already have an account? <Link to="/login">Sign in</Link>
         </p>
       </form>
-    </React.Fragment>
+    </div>
   );
 };
 

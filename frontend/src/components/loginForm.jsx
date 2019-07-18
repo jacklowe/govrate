@@ -57,7 +57,7 @@ const LoginForm = props => {
 
   if (auth.getCurrentUser()) return <Redirect to="/" />;
   return (
-    <React.Fragment>
+    <div className="LoginForm__container">
       <Message message="Sign into your account" />
       <form onSubmit={handleSubmit}>
         <ValidationError error={errors.main} />
@@ -90,7 +90,7 @@ const LoginForm = props => {
           😊
         </span>
       </p>
-    </React.Fragment>
+    </div>
   );
 };
 

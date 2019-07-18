@@ -42,7 +42,7 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <h3>{gov.country}</h3>
       <Message message="Write a review 👊" />
       <form onSubmit={handleSubmit}>
@@ -69,7 +69,7 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
         <input htmlFor="submit" type="submit" value="Submit" />
       </form>
       <p>Already reviewed this State? You can't do it twice!</p>
-    </React.Fragment>
+    </div>
   );
 };
 
