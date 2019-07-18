@@ -11,7 +11,11 @@ const NavBar = ({ handleMenuClick, open }) => {
       <Link className="NavBar__title-link" to="/govs">
         <h1 className="NavBar__title">GovRate</h1>
       </Link>
-      <div className="NavBar__hamburger" onClick={handleMenuClick}>
+      <div
+        role="button"
+        className="NavBar__hamburger"
+        onClick={handleMenuClick}
+      >
         <div className={lineClasses} />
         <div className={lineClasses} />
         <div className={lineClasses} />
