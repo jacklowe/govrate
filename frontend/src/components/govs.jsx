@@ -4,6 +4,8 @@ import getPage from "../utils/paginate";
 import Headline from "./Headline";
 import GovsTable from "./GovsTable";
 import SearchBox from "./SearchBox";
+import Button from "./Button";
+import "./Govs.css";
 
 const Govs = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -54,18 +56,22 @@ const Govs = () => {
         handleQueryChange={handleQueryChange}
       />
       <GovsTable govs={pagedGovs} />
-      <ul>
+      <ul className="Govs__pagination-list">
         <li>
-          <button onClick={() => handlePageChange(currentPage - 1)}>
-            Previous
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            className="Govs__pagination-button Link"
+          >
+            ❮
           </button>
         </li>
+        <li className="Govs__pagination-number">{currentPage}</li>
         <li>
-          <button>{currentPage}</button>
-        </li>
-        <li>
-          <button onClick={() => handlePageChange(currentPage + 1)}>
-            Next
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            className="Govs__pagination-button Link"
+          >
+            ❯
           </button>
         </li>
       </ul>

@@ -5,6 +5,7 @@ import { fetchUser } from "../redux/actions/userActions";
 import { getReviews } from "../services/reviewService";
 import { getGov } from "../services/govService";
 import Stars from "./Stars";
+import Button from "./Button";
 
 const GovReviews = ({ match, currentUser }) => {
   const id = match.params.id;
@@ -47,7 +48,7 @@ const GovReviews = ({ match, currentUser }) => {
       {reviewElement}
       <p>
         <Link to={linkAddress}>
-          <button>Write your own!</button>
+          <Button text={"Write your own!"} />
         </Link>
       </p>
     </div>

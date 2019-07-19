@@ -1,0 +1,12 @@
+.TableHeader {
+  border-collapse: collapse;
+}
+
+.TableHeader__row {
+  border-bottom: 1px dotted black;
+  width: 100%;
+}
+
+.TableHeader__element {
+  padding: 1rem 10rem 0.9rem 0;
+}
