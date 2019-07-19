@@ -1,0 +1,11 @@
+.TableBody__element {
+  padding: 0.5rem 0;
+}
+
+.TableBody__btn {
+  text-align: right;
+}
+
+.TableBody__average-rating {
+  font-size: 1rem;
+}

@@ -7,9 +7,10 @@ const TableHeader = () => (
       <td className="TableHeader__element">
         <strong>Country</strong>
       </td>
-      <td className="TableHeader__element">
-        <strong>Rating</strong>
+      <td className="tableheader__element">
+        <strong>Av. rating</strong>
       </td>
+      <td className="tableheader__element" />
     </tr>
   </thead>
 );

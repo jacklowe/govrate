@@ -4,6 +4,7 @@ import { fetchUser } from "../redux/actions/userActions";
 import { connect } from "react-redux";
 import Stars from "../components/Stars";
 import Button from "../components/Button";
+import "./TableBody.css";
 
 const TableBody = ({ govs, currentUser, fetchUser }) => {
   useEffect(() => {
@@ -14,17 +15,22 @@ const TableBody = ({ govs, currentUser, fetchUser }) => {
     const { govId, country, averageRating } = gov;
     const linkAddress = currentUser ? `/govs/${govId}/reviews` : "/login";
     return (
-      <tr key={govId}>
-        <td>
+      <tr className="TableBody__row" key={govId}>
+        <td className="TableBody__element">
           <Link className="Link" to={`/govs/${govId}/reviews`}>
             {country}
           </Link>
         </td>
-        <td>
+        <td className="TableBody__element">
           <Stars rating={averageRating} />
-          {averageRating && <span> ({averageRating})</span>}
+          {averageRating && (
+            <span className="TableBody__average-rating">
+              {" "}
+              ({averageRating})
+            </span>
+          )}
         </td>
-        <td>
+        <td className="TableBody__element TableBody__btn">
           <Link to={linkAddress}>
             <Button text={"Review"} />
           </Link>
@@ -33,7 +39,7 @@ const TableBody = ({ govs, currentUser, fetchUser }) => {
     );
   });
 
-  return <tbody>{rows}</tbody>;
+  return <tbody className="TableBody">{rows}</tbody>;
 };
 
 const mapStateToProps = state => {

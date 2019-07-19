@@ -4,7 +4,6 @@ import getPage from "../utils/paginate";
 import Headline from "./Headline";
 import GovsTable from "./GovsTable";
 import SearchBox from "./SearchBox";
-import Button from "./Button";
 import "./Govs.css";
 
 const Govs = () => {
@@ -48,7 +47,6 @@ const Govs = () => {
     setPagedGovs(pagedGovs);
   }, [searchQuery, currentPage, govs]);
 
-  console.log(searchedGovs[0]);
   return (
     <section className="Govs">
       <Headline />
