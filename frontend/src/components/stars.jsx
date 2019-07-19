@@ -10,23 +10,17 @@ const Stars = ({ rating, handleRatingChange }) => {
     let icon;
     if (handleRatingChange) {
       icon = (
-        <span>
-          <FontAwesomeIcon
-            className="Stars"
-            icon={iconName[0]}
-            onClick={() => handleRatingChange(index + 1)}
-          />
-        </span>
+        <FontAwesomeIcon
+          className="Stars"
+          icon={iconName[0]}
+          onClick={() => handleRatingChange(index + 1)}
+        />
       );
     } else {
-      icon = (
-        <span>
-          <FontAwesomeIcon className="Stars" icon={iconName[0]} />
-        </span>
-      );
+      icon = <FontAwesomeIcon className="Stars" icon={iconName[0]} />;
     }
     const index = iconName[1];
-    return icon;
+    return <span key={index}>{icon}</span>;
   });
   return content;
 };

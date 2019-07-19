@@ -18,10 +18,14 @@ import { fetchGov } from "../redux/actions/govActions";
 
 /* ICON STUFF*/
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faStar,
+  faStarHalfAlt,
+  faSearch
+} from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faStar as faStarReg } from "@fortawesome/free-regular-svg-icons";
-library.add(faStar, faStarReg, faStarHalfAlt, faGithub);
+library.add(faStar, faStarReg, faStarHalfAlt, faGithub, faSearch);
 
 const App = ({ fetchUser, currentUser }) => {
   useEffect(() => {

@@ -9,6 +9,6 @@
 }
 
 .SearchBox:focus {
-  /* outline: none; */
-  /* border: 1px dotted black; */
+  outline: none;
+  border: 1px solid black;
 }

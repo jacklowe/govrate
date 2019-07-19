@@ -2,9 +2,8 @@
   background-color: black;
   border: none;
   font-family: inherit;
-  /* font-size: 0.9rem; */
   cursor: pointer;
-  padding: 0.45rem;
+  padding: 0.5rem;
   transition: all 0.2s ease-out;
 }
 
