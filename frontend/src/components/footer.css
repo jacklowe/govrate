@@ -25,3 +25,9 @@
 .Footer__icon:hover {
   color: #757575;
 }
+
+@media (max-height: 630px) {
+  .Footer {
+    display: none;
+  }
+}

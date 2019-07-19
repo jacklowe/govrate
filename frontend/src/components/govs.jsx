@@ -48,33 +48,36 @@ const Govs = () => {
     setPagedGovs(pagedGovs);
   }, [searchQuery, currentPage, govs]);
 
+  console.log(searchedGovs[0]);
   return (
-    <section>
+    <section className="Govs">
       <Headline />
       <SearchBox
         searchQuery={searchQuery}
         handleQueryChange={handleQueryChange}
       />
       <GovsTable govs={pagedGovs} />
-      <ul className="Govs__pagination-list">
-        <li>
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            className="Govs__pagination-button Link"
-          >
-            ❮
-          </button>
-        </li>
-        <li className="Govs__pagination-number">{currentPage}</li>
-        <li>
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            className="Govs__pagination-button Link"
-          >
-            ❯
-          </button>
-        </li>
-      </ul>
+      {searchedGovs[0] && (
+        <ul className="Govs__pagination-list">
+          <li>
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              className="Govs__pagination-button Link"
+            >
+              ❮
+            </button>
+          </li>
+          <li className="Govs__pagination-number">{currentPage}</li>
+          <li>
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              className="Govs__pagination-button Link"
+            >
+              ❯
+            </button>
+          </li>
+        </ul>
+      )}
     </section>
   );
 };

@@ -1,3 +1,39 @@
+.Govs {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1250px) and (min-width: 850px) {
+  .Govs {
+    width: 65%;
+  }
+}
+
+@media (max-width: 850px) and (min-width: 600px) {
+  .Govs {
+    width: 75%;
+  }
+}
+
+@media (max-width: 600px) and (min-width: 450px) {
+  .Govs {
+    width: 85%;
+  }
+}
+
+@media (max-width: 450px) and (min-width: 400px) {
+  .Govs {
+    width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .Govs {
+    width: 95%;
+  }
+}
+
 .Govs__pagination-list {
   list-style: none;
   display: flex;
