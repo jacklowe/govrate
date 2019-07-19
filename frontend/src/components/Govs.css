@@ -1,12 +1,12 @@
 .Govs {
-  width: 50%;
+  width: 45%;
   display: flex;
   flex-direction: column;
 }
 
 @media (max-width: 1250px) and (min-width: 850px) {
   .Govs {
-    width: 65%;
+    width: 60%;
   }
 }
 
