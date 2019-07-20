@@ -32,10 +32,19 @@ body {
 }
 
 .Form {
-  margin: 1rem 0;
+  margin: 0.3rem 0 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: start;
+}
+
+.Form__group {
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+
+.Form__validation {
+  margin-bottom: 0.5rem;
 }
 
 .Form__text-input,
@@ -50,7 +59,7 @@ body {
 }
 
 .Form__text-input:focus,
-.Form__password-input {
+.Form__password-input:focus {
   outline: none;
   border: 1px solid black;
 }

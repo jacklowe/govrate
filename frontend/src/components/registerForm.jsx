@@ -75,46 +75,53 @@ const RegisterForm = () => {
   return (
     <div>
       <Message message="Sign up! 😄" />
-      <form onSubmit={handleSubmit}>
-        <ValidationError error={errors.main} />
-        <label htmlFor="email">Email: </label>
-        <br />
-        <Input
-          htmlFor="email"
-          type="text"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
+      <form className="Form" onSubmit={handleSubmit}>
+        <div className="Form__validation">
+          <ValidationError error={errors.main} />
+        </div>
+        <div className="Form__group">
+          <input
+            className="Form__text-input"
+            placeholder="Email"
+            type="text"
+            name="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <ValidationError error={errors.email} />
+        </div>
+        <div className="Form__group">
+          <input
+            className="Form__text-input"
+            type="text"
+            placeholder="Username"
+            name="username"
+            value={username}
+            onChange={handleUsernameChange}
+          />
+          <ValidationError error={errors.username} />
+        </div>
+        <div className="Form__group">
+          <input
+            className="Form__password-input"
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <ValidationError error={errors.password} />
+        </div>
+        <input
+          className="Form__button-input Button"
+          htmlFor="submit"
+          type="submit"
+          value="Sign up"
         />
-        <br />
-        <ValidationError error={errors.email} />
-        <label htmlFor="username">Username: </label>
-        <br />
-        <Input
-          htmlFor="username"
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-        <br />
-        <ValidationError error={errors.username} />
-        <label htmlFor="password">Password: </label>
-        <br />
-        <Input
-          htmlFor="password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <br />
-        <ValidationError error={errors.password} />
-        <input htmlFor="submit" type="submit" value="Sign up" />
-        <p>
-          Already have an account? <Link to="/login">Sign in</Link>
-        </p>
       </form>
+      <p>
+        Already have an account? <Link to="/login">Sign in</Link>
+      </p>
     </div>
   );
 };

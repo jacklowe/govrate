@@ -3,10 +3,10 @@ import { Redirect } from "react-router-dom";
 import Joi from "joi-browser";
 import validate from "../services/validationService";
 import { Link } from "react-router-dom";
-import Input from "./FormInput";
 import Message from "./Message";
 import auth from "../services/authService";
 import ValidationError from "./ValidationError";
+import "./LoginForm.css";
 
 const LoginForm = props => {
   const [email, setEmail] = useState("");
@@ -58,31 +58,35 @@ const LoginForm = props => {
   if (auth.getCurrentUser()) return <Redirect to="/" />;
   return (
     <div className="LoginForm__container">
-      <Message message="Sign into your account" />
+      <Message message="Sign into your account:" />
       <form className="Form" onSubmit={handleSubmit}>
-        <ValidationError error={errors.main} />
-        <input
-          className="Form__text-input"
-          htmlFor="email"
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <br />
-        <ValidationError error={errors.email} />
-        <input
-          className="Form__password-input"
-          htmlFor="password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <br />
-        <ValidationError error={errors.password} />
+        <div className="Form__validation">
+          <ValidationError error={errors.main} />
+        </div>
+        <div className="Form__group">
+          <input
+            className="Form__text-input"
+            htmlFor="email"
+            type="text"
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <ValidationError error={errors.email} />
+        </div>
+        <div className="Form__group">
+          <input
+            className="Form__password-input"
+            htmlFor="password"
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <ValidationError error={errors.password} />
+        </div>
         <input
           className="Form__button-input Button"
           htmlFor="submit"
