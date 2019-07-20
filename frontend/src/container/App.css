@@ -30,3 +30,32 @@ body {
 .Link:hover {
   border-bottom: 1px solid rgba(100, 100, 100);
 }
+
+.Form {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.Form__text-input,
+.Form__password-input {
+  font-family: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: none;
+  padding: 0.45rem;
+  font-size: 0.9rem;
+  width: 100%;
+  /* margin-bottom: 1.4rem; */
+}
+
+.Form__text-input:focus,
+.Form__password-input {
+  outline: none;
+  border: 1px solid black;
+}
+
+.Form__button-input {
+  color: white;
+  width: 100%;
+}

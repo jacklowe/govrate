@@ -59,9 +59,10 @@ const LoginForm = props => {
   return (
     <div className="LoginForm__container">
       <Message message="Sign into your account" />
-      <form onSubmit={handleSubmit}>
+      <form className="Form" onSubmit={handleSubmit}>
         <ValidationError error={errors.main} />
-        <Input
+        <input
+          className="Form__text-input"
           htmlFor="email"
           type="text"
           name="email"
@@ -71,7 +72,8 @@ const LoginForm = props => {
         />
         <br />
         <ValidationError error={errors.email} />
-        <Input
+        <input
+          className="Form__password-input"
           htmlFor="password"
           type="password"
           name="password"
@@ -81,7 +83,12 @@ const LoginForm = props => {
         />
         <br />
         <ValidationError error={errors.password} />
-        <Input htmlFor="submit" type="submit" value="Sign in" />
+        <input
+          className="Form__button-input Button"
+          htmlFor="submit"
+          type="submit"
+          value="Sign in"
+        />
       </form>
       <p>
         Don't have an account? <Link to="/register">Sign up</Link>
