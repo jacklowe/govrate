@@ -64,11 +64,13 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
           <ValidationError className="Form__validation" error={errors.main} />
           <label htmlFor="rating">Click on your desired star rating:</label>
         </div>
-        <Stars
-          name="rating"
-          rating={rating}
-          handleRatingChange={handleRatingChange}
-        />
+        <span className="ReviewForm__stars">
+          <Stars
+            name="rating"
+            rating={rating}
+            handleRatingChange={handleRatingChange}
+          />
+        </span>
         <div className="ReviewForm__label">
           <label htmlFor="review">Enter your review in the box:</label>
         </div>

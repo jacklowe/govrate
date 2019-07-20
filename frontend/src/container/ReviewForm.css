@@ -38,3 +38,7 @@
   margin-top: 0.9rem;
   margin-bottom: 0.2rem;
 }
+
+.ReviewForm__stars {
+  cursor: pointer;
+}

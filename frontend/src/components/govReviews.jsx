@@ -34,13 +34,13 @@ const GovReviews = ({ match, currentUser }) => {
   let reviewElement = reviews.map(review => {
     const { reviewId: id } = review;
     return (
-      <React.Fragment key={id}>
+      <div key={id} className="Reviews__review">
         <h3>{review.username}</h3>
         <span>
           <Stars rating={review.rating} /> <span>({review.rating})</span>
         </span>
         <p>{review.body}</p>
-      </React.Fragment>
+      </div>
     );
   });
 
@@ -52,11 +52,11 @@ const GovReviews = ({ match, currentUser }) => {
         {titleStars} ({gov.averageRating})
       </p>
       {reviewElement}
-      <p>
+      <div className="Reviews__button">
         <Link to={linkAddress}>
           <Button text={"Write your own!"} />
         </Link>
-      </p>
+      </div>
     </div>
   );
 };

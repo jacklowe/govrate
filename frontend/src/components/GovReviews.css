@@ -1,8 +1,17 @@
 .Reviews {
   max-width: 70%;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .Reviews__title {
-  margin: 1rem 0;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.Reviews__review {
+  margin: 1.5rem 0;
+}
+.Reviews__button {
+  text-align: center;
+  padding: 1rem;
 }
