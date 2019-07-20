@@ -5,7 +5,6 @@ import validate from "../services/validationService";
 import { register } from "../services/userService";
 import auth from "../services/authService";
 import Message from "./Message";
-import Input from "./FormInput";
 import ValidationError from "./ValidationError";
 
 const RegisterForm = () => {

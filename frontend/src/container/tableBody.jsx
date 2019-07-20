@@ -13,7 +13,8 @@ const TableBody = ({ govs, currentUser, fetchUser }) => {
 
   const rows = govs.map(gov => {
     const { govId, country, averageRating } = gov;
-    const linkAddress = currentUser ? `/govs/${govId}/reviews` : "/login";
+    const linkAddress = currentUser ? `/govs/${govId}/reviews/new` : "/login";
+
     return (
       <tr className="TableBody__row" key={govId}>
         <td className="TableBody__element">

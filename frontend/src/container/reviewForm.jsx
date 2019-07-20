@@ -5,6 +5,7 @@ import ValidationError from "../components/ValidationError";
 import { postReview } from "../services/reviewService";
 import Message from "../components/Message";
 import Stars from "../components/Stars";
+import "./ReviewForm.css";
 
 const ReviewForm = ({ fetchGov, gov, match, history }) => {
   const id = match.params.id;
@@ -42,22 +43,23 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
   };
 
   return (
-    <div>
-      <h3>{gov.country}</h3>
-      <Message message="Write a review 👊" />
-      <form onSubmit={handleSubmit}>
-        <ValidationError error={errors.main} />
-        <label htmlFor="rating">Click on your desired star rating:</label>
-        <br />
+    <div className="ReviewForm">
+      <h2 className="ReviewForm__title">{gov.country}</h2>
+      <form className="ReviewForm__form" onSubmit={handleSubmit}>
+        <div className="ReviewForm__label">
+          <ValidationError className="Form__validation" error={errors.main} />
+          <label htmlFor="rating">Click on your desired star rating:</label>
+        </div>
         <Stars
           name="rating"
           rating={rating}
           handleRatingChange={handleRatingChange}
         />
-        <br />
-        <label htmlFor="review">Enter your review in the box:</label>
-        <br />
+        <div className="ReviewForm__label">
+          <label htmlFor="review">Enter your review in the box:</label>
+        </div>
         <textarea
+          className="ReviewForm__text-area"
           id="review"
           name="review-body"
           rows="5"
@@ -66,9 +68,15 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
           onChange={handleReviewBodyChange}
         />{" "}
         <br />
-        <input htmlFor="submit" type="submit" value="Submit" />
+        <input
+          className="Form__button-input Button"
+          htmlFor="submit"
+          placeholder=""
+          type="submit"
+          value="Submit"
+        />
       </form>
-      <p>Already reviewed this State? You can't do it twice!</p>
+      <p>Already reviewed this State? You can't do it twice 😔 </p>
     </div>
   );
 };

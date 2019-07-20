@@ -1,0 +1,40 @@
+.ReviewForm {
+  margin: 1.5rem 0;
+  max-width: 85%;
+}
+
+.ReviewForm__title {
+  font-family: babas-neue, sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.ReviewForm__form {
+  margin-bottom: 1rem;
+}
+
+.ReviewForm__text-area {
+  font-family: inherit;
+  margin: 0.4rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: none;
+  padding: 0.45rem;
+  font-size: 0.8rem;
+  width: 100%;
+  resize: none;
+}
+
+.ReviewForm__text-area:focus {
+  outline: none;
+  border: 1px solid black;
+}
+
+.ReviewForm__message {
+  margin-top: 0.8rem;
+  margin-bottom: 1.6rem;
+}
+
+.ReviewForm__label {
+  margin-top: 0.9rem;
+  margin-bottom: 0.2rem;
+}
