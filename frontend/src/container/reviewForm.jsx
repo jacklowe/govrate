@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { fetchGov } from "../redux/actions/govActions";
 import ValidationError from "../components/ValidationError";
 import { postReview } from "../services/reviewService";
-import Message from "../components/Message";
 import Stars from "../components/Stars";
+import validate from "../services/validationService";
+import Joi from "joi-browser";
 import "./ReviewForm.css";
 
 const ReviewForm = ({ fetchGov, gov, match, history }) => {
@@ -25,6 +26,13 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
     setReviewBody(e.target.value);
   };
 
+  const schema = {
+    reviewBody: Joi.string()
+      .allow("")
+      .max(1000)
+      .label("Review")
+  };
+
   const doSubmit = async () => {
     try {
       await postReview(rating, reviewBody, id);
@@ -37,7 +45,13 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
   };
 
   const handleSubmit = e => {
+    setErrors({});
     e.preventDefault();
+
+    const errors = validate({ reviewBody }, schema);
+
+    setErrors(errors || {});
+    if (errors) return;
 
     doSubmit();
   };
@@ -58,6 +72,10 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
         <div className="ReviewForm__label">
           <label htmlFor="review">Enter your review in the box:</label>
         </div>
+        <ValidationError
+          className="Form__validation"
+          error={errors.reviewBody}
+        />
         <textarea
           className="ReviewForm__text-area"
           id="review"
@@ -76,7 +94,12 @@ const ReviewForm = ({ fetchGov, gov, match, history }) => {
           value="Submit"
         />
       </form>
-      <p>Already reviewed this State? You can't do it twice 😔 </p>
+      <p>
+        Already reviewed this State? You can't do it twice{" "}
+        <span role="img" aria-label="emoji">
+          😔
+        </span>
+      </p>
     </div>
   );
 };

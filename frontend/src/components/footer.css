@@ -1,14 +1,11 @@
 .Footer {
-  position: fixed;
-  bottom: 0;
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: center;
   padding-bottom: 1.5em;
-  text-align: center;
+  margin-top: auto;
   line-height: 1rem;
-  /* border-top: 1px dotted black; */
 }
 
 .Footer__text {
@@ -26,7 +23,7 @@
   color: #757575;
 }
 
-@media (max-height: 630px) {
+@media (max-height: 650px) {
   .Footer {
     display: none;
   }

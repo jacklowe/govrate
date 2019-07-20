@@ -11,6 +11,9 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.Button:focus {
+  outline: 1px solid black;
+}
 .Button__text {
   color: white;
 }

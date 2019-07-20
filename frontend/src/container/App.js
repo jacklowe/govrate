@@ -33,7 +33,7 @@ const App = ({ fetchUser, currentUser }) => {
   }, [fetchUser]);
 
   return (
-    <React.Fragment>
+    <div className="App">
       <Navigation user={currentUser} />
       <main className="container">
         <Switch>
@@ -51,7 +51,7 @@ const App = ({ fetchUser, currentUser }) => {
         </Switch>
       </main>
       <Footer />
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -6,6 +6,7 @@ import { getReviews } from "../services/reviewService";
 import { getGov } from "../services/govService";
 import Stars from "./Stars";
 import Button from "./Button";
+import "./GovReviews.css";
 
 const GovReviews = ({ match, currentUser }) => {
   const id = match.params.id;
@@ -45,9 +46,9 @@ const GovReviews = ({ match, currentUser }) => {
 
   const linkAddress = currentUser ? `/govs/${id}/reviews/new` : "/login";
   return (
-    <div>
-      <h2>{gov.country}</h2>
-      <p>
+    <div className="Reviews">
+      <h2 className="Reviews__title">{gov.country}</h2>
+      <p className="Reviews__average-rating">
         {titleStars} ({gov.averageRating})
       </p>
       {reviewElement}
