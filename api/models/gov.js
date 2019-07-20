@@ -46,7 +46,12 @@ async function getGov(country) {
 
 async function getGovById(govId) {
   const gov = await pool.query(
-    `SELECT govId, country FROM govs
+    `SELECT
+      govId,
+      country, 
+      ROUND(AVG(rating), 1) as averageRating
+    FROM govs
+    LEFT JOIN reviews USING (govId)
     WHERE govId = ?`,
     [govId]
   );

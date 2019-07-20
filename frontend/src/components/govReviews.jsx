@@ -28,6 +28,8 @@ const GovReviews = ({ match, currentUser }) => {
     fetchUser();
   }, [id]);
 
+  let titleStars = <Stars rating={gov.averageRating} />;
+
   let reviewElement = reviews.map(review => {
     const { reviewId: id } = review;
     return (
@@ -45,6 +47,9 @@ const GovReviews = ({ match, currentUser }) => {
   return (
     <div>
       <h2>{gov.country}</h2>
+      <p>
+        {titleStars} ({gov.averageRating})
+      </p>
       {reviewElement}
       <p>
         <Link to={linkAddress}>
