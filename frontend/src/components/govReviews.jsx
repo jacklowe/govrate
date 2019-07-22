@@ -5,13 +5,17 @@ import { fetchUser } from "../redux/actions/userActions";
 import { getReviews } from "../services/reviewService";
 import { getGov } from "../services/govService";
 import Stars from "./Stars";
-import Button from "./Button";
+import getPage from "../utils/paginate";
+import Pagination from "./Pagination";
 import "./GovReviews.css";
 
 const GovReviews = ({ match, currentUser }) => {
   const id = match.params.id;
   const [reviews, setReviews] = useState([]);
   const [gov, setGov] = useState("");
+  const [pagedReviews, setPagedReviews] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageLength = 5;
 
   const fetchGov = async id => {
     const { data: gov } = await getGov(id);
@@ -27,11 +31,21 @@ const GovReviews = ({ match, currentUser }) => {
     fetchReviews(id).then(r => setReviews(r));
     fetchGov(id).then(g => setGov(g));
     fetchUser();
-  }, [id]);
+
+    const pagedGovs = getPage(reviews, currentPage, pageLength);
+
+    setPagedReviews(pagedGovs);
+  }, [id, currentPage, reviews]);
+
+  const maxPage = Math.ceil(reviews.length / pageLength);
+  const handlePageChange = newPage => {
+    if (newPage < 1 || newPage > maxPage) return null;
+    setCurrentPage(newPage);
+  };
 
   let titleStars = <Stars rating={gov.averageRating} />;
 
-  let reviewElement = reviews.map(review => {
+  let reviewElement = pagedReviews.map(review => {
     const { reviewId: id } = review;
     return (
       <div key={id} className="Reviews__review">
@@ -60,8 +74,14 @@ const GovReviews = ({ match, currentUser }) => {
       </p>
       {reviewElement}
       <div className="Reviews__button">
+        <Pagination
+          handlePageChange={handlePageChange}
+          currentPage={currentPage}
+        />
         <Link to={linkAddress}>
-          <Button text={"Write your own!"} />
+          <button className="Button">
+            <span className="Button__text">Write your own!</span>
+          </button>
         </Link>
       </div>
     </div>

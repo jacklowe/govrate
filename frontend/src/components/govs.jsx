@@ -4,12 +4,13 @@ import getPage from "../utils/paginate";
 import Headline from "./Headline";
 import GovsTable from "./GovsTable";
 import SearchBox from "./SearchBox";
+import Pagination from "./Pagination";
 import "./Govs.css";
 
 const Govs = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [govs, setGovs] = useState([]);
-  const [searchedGovs, setsearchedGovs] = useState([]);
+  const [searchedGovs, setSearchedGovs] = useState([]);
   const [pagedGovs, setPagedGovs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const pageLength = 6;
@@ -40,7 +41,7 @@ const Govs = () => {
     const searchedGovs = [...govs].filter(gov =>
       gov.country.toLowerCase().startsWith(query)
     );
-    setsearchedGovs(searchedGovs);
+    setSearchedGovs(searchedGovs);
 
     const pagedGovs = getPage(searchedGovs, currentPage, pageLength);
 
@@ -56,25 +57,10 @@ const Govs = () => {
       />
       <GovsTable govs={pagedGovs} />
       {searchedGovs[0] && (
-        <ul className="Govs__pagination-list">
-          <li>
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              className="Govs__pagination-button Link"
-            >
-              ❮
-            </button>
-          </li>
-          <li className="Govs__pagination-number">{currentPage}</li>
-          <li>
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              className="Govs__pagination-button Link"
-            >
-              ❯
-            </button>
-          </li>
-        </ul>
+        <Pagination
+          handlePageChange={handlePageChange}
+          currentPage={currentPage}
+        />
       )}
     </section>
   );

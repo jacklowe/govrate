@@ -1,5 +1,5 @@
 .Reviews {
-  max-width: 70%;
+  max-width: 60%;
   min-width: 55%;
   margin-bottom: 1.5rem;
   font-size: 1rem;
@@ -25,8 +25,6 @@
     ". body";
   align-items: center;
   padding: 1.8rem 0;
-  min-height: 0;
-  min-width: 0;
   border-bottom: 1px dotted black;
 }
 
@@ -47,10 +45,16 @@
   padding: 1rem 0;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1300px) {
   .Reviews__review {
     display: flex;
     flex-direction: column;
     align-items: start;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+  }
+
+  .Reviews__rating {
+    margin-bottom: 0.2rem;
   }
 }
