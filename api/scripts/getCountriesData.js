@@ -1,25 +1,27 @@
-const promisify = require("util").promisify;
-const request = promisify(require("request"));
+const axios = require("axios");
 
-try {
-  request.get(
-    {
-      url: "https://restcountries.eu/rest/v2/all?fields=name",
-      headers: {
-        "content-type": "application/json"
-      }
-    },
-    (error, response, body) => {
-      const data = JSON.parse(body);
-      console.log(data);
-      if (error) {
-        console.log("error: ", error);
-      }
-      if (response) {
-        // console.log("response: ", response);
-      }
-    }
-  );
-} catch (error) {
-  console.error(error);
+axios.interceptors.response.use(null, error => {
+  const expectedError =
+    error.response &&
+    error.response.status >= 400 &&
+    error.response.status < 500;
+
+  if (!expectedError) {
+    console.error(error);
+  }
+
+  return Promise.reject(error);
+});
+
+function getGov(id) {
+  return axios.get("https://restcountries.eu/rest/v2/all?fields=name");
 }
+
+async function getGovAndPrint() {
+  const res = await getGov("1");
+  const countries = res.data;
+  console.log(countries);
+  return countries;
+}
+
+getGovAndPrint();
