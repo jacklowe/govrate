@@ -15,7 +15,8 @@ async function getReviews(govId) {
       USING (govId)
     JOIN users
       USING (userId)
-    WHERE govId = ?`,
+    WHERE govId = ?
+    ORDER by reviewId DESC`,
     [govId]
   );
   return reviews;

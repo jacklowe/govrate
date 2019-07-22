@@ -1,0 +1,20 @@
+.Pagination-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Pagination-button {
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-family: inherit;
+  margin: 20px 20px;
+  border: none;
+  background: none;
+}
+
+.Pagination-number {
+  margin: 0 10px;
+  font-size: 0.9rem;
+}

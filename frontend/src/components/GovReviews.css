@@ -35,12 +35,15 @@
   padding-right: 0.5rem;
   grid-area: username;
 }
+
 .Reviews__rating {
   grid-area: rating;
 }
+
 .Reviews__body {
   grid-area: body;
 }
+
 .Reviews__button {
   padding: 1rem 0;
 }
@@ -49,7 +52,7 @@
   .Reviews__review {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 1.5rem 0;
   }

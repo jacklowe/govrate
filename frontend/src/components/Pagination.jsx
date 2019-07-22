@@ -1,21 +1,22 @@
 import React from "react";
+import "./Pagination.css";
 
 const Pagination = ({ handlePageChange, currentPage }) => {
   return (
-    <ul className="Govs__pagination-list">
+    <ul className="Pagination-list">
       <li>
         <button
           onClick={() => handlePageChange(currentPage - 1)}
-          className="Govs__pagination-button Link"
+          className="Pagination-button Link"
         >
           ❮
         </button>
       </li>
-      <li className="Govs__pagination-number">{currentPage}</li>
+      <li className="Pagination-number">{currentPage}</li>
       <li>
         <button
           onClick={() => handlePageChange(currentPage + 1)}
-          className="Govs__pagination-button Link"
+          className="Pagination-button Link"
         >
           ❯
         </button>
