@@ -1,17 +1,56 @@
 .Reviews {
   max-width: 70%;
+  min-width: 55%;
   margin-bottom: 1.5rem;
+  font-size: 1rem;
 }
 
 .Reviews__title {
+  font-family: babas-neue, sans-serif;
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.Reviews__subtitle {
+  margin-top: 1.2rem;
+  margin-bottom: 0.2rem;
 }
 
 .Reviews__review {
-  margin: 1.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: minmax(3rem, auto);
+  grid-template-areas:
+    "username rating"
+    ". body";
+  align-items: center;
+  padding: 1.8rem 0;
+  min-height: 0;
+  min-width: 0;
+  border-bottom: 1px dotted black;
+}
+
+.Reviews__username {
+  display: flex;
+  font-family: babas-neue, sans-serif;
+  font-size: 1rem;
+  padding-right: 0.5rem;
+  grid-area: username;
+}
+.Reviews__rating {
+  grid-area: rating;
+}
+.Reviews__body {
+  grid-area: body;
 }
 .Reviews__button {
-  text-align: center;
-  padding: 1rem;
+  padding: 1rem 0;
+}
+
+@media (max-width: 1000px) {
+  .Reviews__review {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
 }

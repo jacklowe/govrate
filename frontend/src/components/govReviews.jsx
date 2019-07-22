@@ -35,11 +35,12 @@ const GovReviews = ({ match, currentUser }) => {
     const { reviewId: id } = review;
     return (
       <div key={id} className="Reviews__review">
-        <h3>{review.username}</h3>
-        <span>
-          <Stars rating={review.rating} /> <span>({review.rating})</span>
+        <h3 className="Reviews__username">{review.username}</h3>
+        <span className="Reviews__rating">
+          <Stars rating={review.rating} />{" "}
+          <span className="Reviews__rating-text">({review.rating})</span>
         </span>
-        <p>{review.body}</p>
+        <p className="Reviews__body">{review.body}</p>
       </div>
     );
   });
@@ -50,6 +51,12 @@ const GovReviews = ({ match, currentUser }) => {
       <h2 className="Reviews__title">{gov.country}</h2>
       <p className="Reviews__average-rating">
         {titleStars} ({gov.averageRating})
+      </p>
+      <p className="Reviews__subtitle">
+        Here are the reviews...{" "}
+        <span role="img" aria-label="emoji">
+          😬
+        </span>
       </p>
       {reviewElement}
       <div className="Reviews__button">
