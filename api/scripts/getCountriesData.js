@@ -1,27 +1,32 @@
 const axios = require("axios");
+const mysql = require("mysql");
+const config = require("../config");
 
-axios.interceptors.response.use(null, error => {
-  const expectedError =
-    error.response &&
-    error.response.status >= 400 &&
-    error.response.status < 500;
+// initialise environment variables
+require("../startup/config")();
 
-  if (!expectedError) {
-    console.error(error);
-  }
+const connection = mysql.createConnection(config.db);
 
-  return Promise.reject(error);
-});
-
-function getGov(id) {
-  return axios.get("https://restcountries.eu/rest/v2/all?fields=name");
-}
-
-async function getGovAndPrint() {
-  const res = await getGov("1");
+async function main() {
+  const res = await axios.get(
+    "https://restcountries.eu/rest/v2/all?fields=name"
+  );
   const countries = res.data;
-  console.log(countries);
-  return countries;
+
+  connection.connect();
+  for (let i = 0; i < countries.length; i++) {
+    connection.query(
+      `INSERT INTO govs (country)
+      VALUES (
+        ?
+      )`,
+      [countries[i].name],
+      function(error, results, fields) {
+        if (error) throw error;
+      }
+    );
+  }
+  connection.end();
 }
 
-getGovAndPrint();
+main();
