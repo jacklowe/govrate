@@ -119,7 +119,10 @@ const RegisterForm = () => {
         />
       </form>
       <p>
-        Already have an account? <Link to="/login">Sign in</Link>
+        Already have an account?{" "}
+        <Link className="Link" to="/login">
+          Sign in
+        </Link>
       </p>
     </div>
   );

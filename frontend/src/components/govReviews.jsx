@@ -15,7 +15,7 @@ const GovReviews = ({ match, currentUser }) => {
   const [gov, setGov] = useState("");
   const [pagedReviews, setPagedReviews] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageLength = 5;
+  const pageLength = 4;
 
   const fetchGov = async id => {
     const { data: gov } = await getGov(id);
@@ -32,9 +32,8 @@ const GovReviews = ({ match, currentUser }) => {
     fetchGov(id).then(g => setGov(g));
     fetchUser();
 
-    const pagedGovs = getPage(reviews, currentPage, pageLength);
-
-    setPagedReviews(pagedGovs);
+    const pagedReviews = getPage(reviews, currentPage, pageLength);
+    setPagedReviews(pagedReviews);
   }, [id, currentPage, reviews]);
 
   const maxPage = Math.ceil(reviews.length / pageLength);
@@ -64,8 +63,9 @@ const GovReviews = ({ match, currentUser }) => {
     <div className="Reviews">
       <h2 className="Reviews__title">{gov.country}</h2>
       <p className="Reviews__average-rating">
-        {titleStars} ({gov.averageRating})
+        {titleStars} {reviews[0] && <span>({gov.averageRating})</span>}
       </p>
+
       <p className="Reviews__subtitle">
         Here are the reviews...{" "}
         <span role="img" aria-label="emoji">

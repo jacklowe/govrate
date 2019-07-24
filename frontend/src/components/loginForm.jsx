@@ -95,7 +95,10 @@ const LoginForm = props => {
         />
       </form>
       <p>
-        Don't have an account? <Link to="/register">Sign up</Link>
+        Don't have an account?{" "}
+        <Link className="Link" to="/register">
+          Sign up
+        </Link>
         <span role="img" aria-label="smiley emoji">
           {" "}
           😊

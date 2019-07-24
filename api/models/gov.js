@@ -22,7 +22,7 @@ async function addGov(country) {
     )`,
     [country]
   );
-  return getGov(country); //getGovs();
+  return getGov(country);
 }
 
 async function deleteGov(govId) {

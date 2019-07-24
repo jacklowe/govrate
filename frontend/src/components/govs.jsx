@@ -5,11 +5,13 @@ import Headline from "./Headline";
 import GovsTable from "./GovsTable";
 import SearchBox from "./SearchBox";
 import Pagination from "./Pagination";
+import Spinner from "./Spinner";
 import "./Govs.css";
 
 const Govs = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [govs, setGovs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchedGovs, setSearchedGovs] = useState([]);
   const [pagedGovs, setPagedGovs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,7 +34,12 @@ const Govs = () => {
   };
 
   useEffect(() => {
-    fetchGovs().then(g => setGovs(g));
+    setIsLoading(true);
+
+    fetchGovs().then(g => {
+      setGovs(g);
+      setIsLoading(false);
+    });
   }, []);
 
   useEffect(() => {
@@ -48,6 +55,18 @@ const Govs = () => {
     setPagedGovs(pagedGovs);
   }, [searchQuery, currentPage, govs]);
 
+  const tableWithPagination = (
+    <React.Fragment>
+      <GovsTable govs={pagedGovs} searchQuery={searchQuery} />
+      {searchedGovs[0] && (
+        <Pagination
+          handlePageChange={handlePageChange}
+          currentPage={currentPage}
+        />
+      )}
+    </React.Fragment>
+  );
+
   return (
     <section className="Govs">
       <Headline />
@@ -55,13 +74,7 @@ const Govs = () => {
         searchQuery={searchQuery}
         handleQueryChange={handleQueryChange}
       />
-      <GovsTable govs={pagedGovs} />
-      {searchedGovs[0] && (
-        <Pagination
-          handlePageChange={handlePageChange}
-          currentPage={currentPage}
-        />
-      )}
+      {isLoading ? <Spinner /> : tableWithPagination}
     </section>
   );
 };

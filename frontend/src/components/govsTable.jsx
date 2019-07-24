@@ -3,7 +3,7 @@ import TableHeader from "./TableHeader";
 import TableBody from "../container/TableBody";
 import "./GovsTable.css";
 
-const GovsTable = ({ govs }) => {
+const GovsTable = ({ govs, searchQuery }) => {
   let content = (
     <table className="GovsTable">
       <TableHeader />
@@ -11,7 +11,7 @@ const GovsTable = ({ govs }) => {
     </table>
   );
 
-  if (!govs[0])
+  if (!govs[0] && searchQuery) {
     content = (
       <p>
         No matches
@@ -21,6 +21,7 @@ const GovsTable = ({ govs }) => {
         </span>
       </p>
     );
+  }
 
   return content;
 };
