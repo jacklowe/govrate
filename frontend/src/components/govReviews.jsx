@@ -59,6 +59,11 @@ const GovReviews = ({ match, currentUser }) => {
   });
 
   const linkAddress = currentUser ? `/govs/${id}/reviews/new` : "/login";
+
+  if (!pagedReviews[0]) {
+    return null;
+  }
+
   return (
     <div className="Reviews">
       <h2 className="Reviews__title">{gov.country}</h2>
