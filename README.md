@@ -6,6 +6,6 @@ frontend uses React & Redux etc.
 
 backend is a JavaScript/Node.js API using the Express framework
 
-testing with Jest on frontend and backend
+testing with Jest on backend and Jest/Cypress on frontend
 
 and a mySQL database :)

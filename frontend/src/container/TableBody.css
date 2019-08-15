@@ -9,3 +9,9 @@
 .TableBody__average-rating {
   font-size: 1rem;
 }
+
+@media (max-width: 355px) {
+  .TableBody__average-rating {
+    display: none;
+  }
+}

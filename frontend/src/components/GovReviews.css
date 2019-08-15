@@ -1,8 +1,19 @@
 .Reviews {
-  max-width: 60%;
-  min-width: 55%;
+  width: 50%;
   margin-bottom: 1.5rem;
   font-size: 1rem;
+}
+
+@media (max-width: 500px) {
+  .Reviews {
+    width: 70%;
+  }
+}
+
+@media (max-width: 800px) and (min-width: 500px) {
+  .Reviews {
+    width: 60%;
+  }
 }
 
 .Reviews__title {

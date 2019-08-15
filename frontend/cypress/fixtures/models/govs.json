@@ -1,0 +1,17 @@
+[
+  {
+    "govId": 1,
+    "country": "United States",
+    "averageRating": 4.7
+  },
+  {
+    "govId": 2,
+    "country": "United Kingdom",
+    "averageRating": 3.5
+  },
+  {
+    "govId": 3,
+    "country": "Germany",
+    "averageRating": 4.1
+  }
+]
