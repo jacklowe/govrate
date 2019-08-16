@@ -39,14 +39,13 @@ const App = ({ fetchUser, currentUser }) => {
         <Switch>
           <Route path="/govs/:id/reviews/new" component={ReviewForm} />
           <Route path="/govs/:id/reviews" component={GovReviews} />
-          <Route path="/govs" component={Govs} />
+          <Route exact path="/" component={Govs} />
           <Route path="/register" component={RegisterForm} />
           <Route path="/login" component={LoginForm} />
           <Route path="/logout" component={Logout} />
           <Route path="/not-found" component={NotFound} />
 
           {/* Redirects */}
-          <Redirect from="/" exact to="/govs" />
           <Redirect to="/not-found" />
         </Switch>
       </main>

@@ -8,7 +8,7 @@ const NavBar = ({ handleMenuClick, open }) => {
     : "NavBar__hamburger-line";
   return (
     <nav className="NavBar">
-      <Link className="NavBar__title-link" to="/govs">
+      <Link className="NavBar__title-link" to="/">
         <h1 className="NavBar__title">GovRate</h1>
       </Link>
       <div
