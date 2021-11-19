@@ -1,13 +1,13 @@
-# govrate
+# GovRate
 
-web app where you can rate/review governments 👌
+Web app where you can rate/review governments 👌
 
-frontend uses React & Redux etc.
+Front-end uses React & Redux etc.
 
-backend is a JavaScript/Node.js API using the Express framework
+Back-end is a JavaScript/Node.js API using the Express framework
 
-testing with Jest on backend and Jest/Cypress on frontend
+Testing with Jest on backend and Jest/Cypress on frontend
 
-and a mySQL database :)
+mySQL database for persistence
 
 http://govrate.co.uk
