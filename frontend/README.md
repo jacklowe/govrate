@@ -1,11 +1,5 @@
-# front end
+# Front-end
 
-this is the folder for the frontend. 
+This is the source code for the front-end. 
 
-mainly uses React & Redux
-
-originally created project from scratch i.e. with Webpack and Babel etc. without create-react-app,
-
-ran into some annoying issues with stuff like routing
-
-so switched to create-react-app 🌚
+Mainly uses React, Redux and related tools.
