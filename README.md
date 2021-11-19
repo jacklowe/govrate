@@ -1,6 +1,6 @@
 # GovRate
 
-Web application where you can rate/review governments 👌
+Web application where you can rate and review governments 👌
 
 Front-end uses React, Redux etc.
 
