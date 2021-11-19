@@ -6,4 +6,4 @@ Mainly uses React, Redux, react-router etc.
 
 Jest and Cypress are used for testing.
 
-`src/container` has components connected to Redux, `src/components` has the rest of the components.
+`src/container` has components connected to Redux otherwise they'll be found in `src/components`.
