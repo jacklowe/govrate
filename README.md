@@ -2,7 +2,7 @@
 
 Web app where you can rate/review governments 👌
 
-Front-end uses React & Redux etc.
+Front-end uses React, Redux etc.
 
 Back-end is a JavaScript/Node.js API using the Express framework
 
